@@ -8,18 +8,18 @@ layout: default
     {% assign m = page.date | date: "%-m" %}
     {{ page.date | date: "%-d" }}
     {% case m %}
-      {% when '1' %}Januar
-      {% when '2' %}Februar
-      {% when '3' %}M&auml;rz
-      {% when '4' %}April
-      {% when '5' %}Mai
-      {% when '6' %}Juni
-      {% when '7' %}Juli
-      {% when '8' %}August
-      {% when '9' %}September
-      {% when '10' %}Oktober
-      {% when '11' %}November
-      {% when '12' %}Dezember
+      {% when '1' %}січня
+      {% when '2' %}лютого
+      {% when '3' %}березня
+      {% when '4' %}квітня
+      {% when '5' %}травня
+      {% when '6' %}червня
+      {% when '7' %}липня
+      {% when '8' %}серпня
+      {% when '9' %}вересня
+      {% when '10' %}жовтня
+      {% when '11' %}листопада
+      {% when '12' %}грудня
     {% endcase %}
     {{ page.date | date: "%Y" }}</time>
   {{ content }}
@@ -34,7 +34,23 @@ layout: default
         <h3>
           <a href="{{ site.baseurl }}{{ post.url }}">
             {{ post.title }}
-            <small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time></small>
+            <small><time datetime="{{ post.date | date_to_xmlschema }}">{% assign m = page.date | date: "%-m" %}
+                {{ page.date | date: "%-d" }}
+                {% case m %}
+                  {% when '1' %}січня
+                  {% when '2' %}лютого
+                  {% when '3' %}березня
+                  {% when '4' %}квітня
+                  {% when '5' %}травня
+                  {% when '6' %}червня
+                  {% when '7' %}липня
+                  {% when '8' %}серпня
+                  {% when '9' %}вересня
+                  {% when '10' %}жовтня
+                  {% when '11' %}листопада
+                  {% when '12' %}грудня
+                {% endcase %}
+                {{ page.date | date: "%Y" }}</time></small>
           </a>
         </h3>
       </li>
