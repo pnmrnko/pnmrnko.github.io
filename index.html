@@ -12,8 +12,7 @@ title: Home
       </a>
     </h1>
 
-    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
-      {% assign m = page.date | date: "%-m" %}
+    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{% assign m = page.date | date: "%-m" %}
         {{ page.date | date: "%-d" }}
         {% case m %}
           {% when '1' %}січня
