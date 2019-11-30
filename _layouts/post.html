@@ -25,36 +25,3 @@ layout: default
   {{ content }}
 </article>
 
-{% if site.related_posts != empty %}
-<aside class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    {% for post in site.related_posts limit:3 %}
-      <li>
-        <h3>
-          <a href="{{ site.baseurl }}{{ post.url }}">
-            {{ post.title }}
-            <small><time datetime="{{ post.date | date_to_xmlschema }}">{% assign m = page.date | date: "%-m" %}
-                {{ page.date | date: "%-d" }}
-                {% case m %}
-                  {% when '1' %}січня
-                  {% when '2' %}лютого
-                  {% when '3' %}березня
-                  {% when '4' %}квітня
-                  {% when '5' %}травня
-                  {% when '6' %}червня
-                  {% when '7' %}липня
-                  {% when '8' %}серпня
-                  {% when '9' %}вересня
-                  {% when '10' %}жовтня
-                  {% when '11' %}листопада
-                  {% when '12' %}грудня
-                {% endcase %}
-                {{ page.date | date: "%Y" }}</time></small>
-          </a>
-        </h3>
-      </li>
-    {% endfor %}
-  </ul>
-</aside>
-{% endif %}
