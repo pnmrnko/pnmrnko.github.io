@@ -4,7 +4,24 @@ layout: default
 
 <article class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">{{ page.date | date_to_string }}</time>
+  <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">
+    {% assign m = page.date | date: "%-m" %}
+    {{ page.date | date: "%-d" }}
+    {% case m %}
+      {% when '1' %}Januar
+      {% when '2' %}Februar
+      {% when '3' %}M&auml;rz
+      {% when '4' %}April
+      {% when '5' %}Mai
+      {% when '6' %}Juni
+      {% when '7' %}Juli
+      {% when '8' %}August
+      {% when '9' %}September
+      {% when '10' %}Oktober
+      {% when '11' %}November
+      {% when '12' %}Dezember
+    {% endcase %}
+    {{ page.date | date: "%Y" }}</time>
   {{ content }}
 </article>
 
