@@ -3,11 +3,11 @@
 // Inline and block-level code snippets. Includes tweaks to syntax highlighted
 // snippets from Pygments/Rouge and Gist embeds.
 
+/* Code */
 code,
 pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
-
 code {
   padding: .25em .5em;
   font-size: 85%;
@@ -15,43 +15,31 @@ code {
   background-color: #f9f9f9;
   border-radius: 3px;
 }
-
 pre {
+  display: block;
   margin-top: 0;
   margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: .8rem;
+  line-height: 1.4;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f9f9f9;
 }
-
 pre code {
   padding: 0;
   font-size: 100%;
   color: inherit;
   background-color: transparent;
 }
-
-// Pygments via Jekyll
 .highlight {
-  padding: 1rem;
   margin-bottom: 1rem;
-  font-size: .8rem;
-  line-height: 1.4;
-  background-color: #f9f9f9;
-  border-radius: .25rem;
-
-  pre {
-    margin-bottom: 0;
-    overflow-x: auto;
-  }
-
-  .lineno {
-    display: inline-block; // Ensures the null space also isn't selectable
-    padding-right: .75rem;
-    padding-left: .25rem;
-    color: #999;
-    // Make sure numbers aren't selectable
-    -webkit-user-select: none;
-       -moz-user-select: none;
-            user-select: none;
-  }
+  border-radius: 4px;
+}
+.highlight pre {
+  margin-bottom: 0;
 }
 
 
