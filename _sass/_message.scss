@@ -3,9 +3,23 @@
 // Show alert messages to users. You may add it to single elements like a `<p>`,
 // or to a parent if there are multiple elements to show.
 
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  .message {
+    color: #717171;
+    background-color: #f9f9f9;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .message {
+    color: #fff;
+    background-color: #0040cc;
+  }
+}
+
 .message {
   margin-bottom: 1rem;
   padding: 1rem;
-  color: #717171;
-  background-color: #f9f9f9;
 }
