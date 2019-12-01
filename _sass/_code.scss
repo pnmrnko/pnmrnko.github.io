@@ -6,15 +6,23 @@
 /* Code */
 code,
 pre {
-  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-family: Menlo, Monaco, "Consolas", monospace;
 }
-code {
-  padding: .25em .5em;
-  font-size: 85%;
-  color: #bf616a;
-  background-color: #f9f9f9;
-  border-radius: 3px;
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  code {
+    color: #bf616a;
+  }
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  code {
+    color: #a6e22e;
+  }
+}
+
 pre {
   display: block;
   margin-top: 0;
