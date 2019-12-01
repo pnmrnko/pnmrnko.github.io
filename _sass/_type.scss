@@ -68,6 +68,20 @@ ul, ol, dl {
   margin-bottom: 1rem;
 }
 
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  dt {
+    color: #515151;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  dt {
+    color: rgb( 255, 255, 255      );
+  }
+}
+
 dt {
   font-weight: bold;
 }
