@@ -140,7 +140,7 @@ abbr {
 @media (prefers-color-scheme: light) {
   blockquote {
     color: #7a7a7a;
-    border-left: #e5e5e5;
+    border-left: .25rem solid #e5e5e5;
   }
 }
 
@@ -148,14 +148,13 @@ abbr {
 @media (prefers-color-scheme: dark) {
   blockquote {
     color: rgb( 137, 136, 135      );
-    border-left: rgb( 240, 106,  33      );
+    border-left: .25rem solid rgb( 240, 106,  33      );
   }
 }
 
 blockquote {
   padding: .5rem 1rem;
   margin: .8rem 0;
-  border-left: .25rem solid;
 
   p:last-child {
     margin-bottom: 0;
