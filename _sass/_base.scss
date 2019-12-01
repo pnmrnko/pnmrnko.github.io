@@ -24,9 +24,23 @@ html {
   }
 }
 
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  body {
+    color: #515151;
+    background-color: #fff;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    color:  #fff;
+    background-color: #515151;
+  }
+}
+
 body {
-  color: #515151;
-  background-color: #fff;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
