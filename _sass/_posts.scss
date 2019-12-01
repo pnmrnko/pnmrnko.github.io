@@ -9,22 +9,51 @@
 }
 
 // Blog post or page title
-.page-title,
-.post-title,
-.post-title a {
-  color: #303030;
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  .page-title,
+  .post-title,
+  .post-title a {
+    color: #303030;
+  }
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .page-title,
+  .post-title,
+  .post-title a {
+    color: rgb( 255, 255, 255      );
+  }
+}
+
+
 .page-title,
 .post-title {
   margin-top: 0;
 }
 
 // Meta data line below post title
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  .post-date {
+    color: #9a9a9a;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .post-date {
+    color: rgb( 137, 136, 135      );
+  }
+}
+
 .post-date {
   display: block;
   margin-top: -.5rem;
   margin-bottom: 1rem;
-  color: #9a9a9a;
 }
 
 
