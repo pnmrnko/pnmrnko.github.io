@@ -2,11 +2,25 @@
 //
 // Headings, body text, lists, and other misc typographic elements.
 
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  h1, h2, h3, h4, h5, h6 {
+    color: #313131;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  h1, h2, h3, h4, h5, h6 {
+    color: rgb( 255, 255, 255      );
+  }
+}
+
+
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
   font-weight: bold;
   line-height: 1.25;
-  color: #313131;
   text-rendering: optimizeLegibility;
 }
 
@@ -34,9 +48,20 @@ p {
   margin-bottom: 1rem;
 }
 
-strong {
-  color: #303030;
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  strong {
+    color: #303030;
+  }
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  strong {
+    color: rgb( 255, 255, 255      );
+  }
+}
+
 
 ul, ol, dl {
   margin-top: 0;
@@ -51,25 +76,63 @@ dd {
   margin-bottom: .5rem;
 }
 
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  hr {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #fff;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  hr {
+    border-top: 1px solid rgba( 137, 136, 135, .25 );
+    border-bottom: 1px solid rgba( 137, 136, 135, .25 );
+  }
+}
+
 hr {
   position: relative;
   margin: 1.5rem 0;
   border: 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #fff;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  abbr {
+    color: #555;
+
+    &[title] {
+      cursor: help;
+      border-bottom: 1px dotted #e5e5e5;
+    }
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  abbr {
+    color: rgb( 255, 255, 255      );
+
+    &[title] {
+      cursor: help;
+      border-bottom: 1px dotted rgba( 137, 136, 135, .25 );
+    }
+  }
 }
 
 abbr {
   font-size: 85%;
   font-weight: bold;
-  color: #555;
+  
   text-transform: uppercase;
 
-  &[title] {
-    cursor: help;
-    border-bottom: 1px dotted #e5e5e5;
-  }
+  
 }
+
+
+/* Дійшов сюди */
 
 blockquote {
   padding: .5rem 1rem;
