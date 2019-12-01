@@ -8,6 +8,11 @@ title: Місячне затемнення
 ![Затемнення 15 червня 2011 року. Фото: Dany Sternfeld](/assets/images/moon-eclipse-dany-sternfeld.jpg)
 *Затемнення 15 червня 2011 року. Фото: Dany Sternfeld*
 
+<figure>
+  <img src="{{site.url}}/assets/images/moon-eclipse-dany-sternfeld.jpg" alt="Часткове місячне затемнення"/>
+  <figcaption>Затемнення 15 червня 2011 року. Фото: Dany Sternfeld</figcaption>
+</figure>
+
 Затемнення у липні буде довшим, ніж зазвичай, і матиме кілька особливостей. Читайте далі й дізнайтеся як підготуватися до події.
 
 ## Виберіть локацію
