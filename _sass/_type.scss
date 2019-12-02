@@ -157,7 +157,7 @@ abbr {
 @media (prefers-color-scheme: dark) {
   blockquote {
     color: rgb( 137, 136, 135      );
-    border-left: .25rem solid rgb( 240, 106,  33      );
+    border-left: .25rem solid rgba( 137, 136, 135, .25 ); 
   }
 }
 
