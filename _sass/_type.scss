@@ -93,16 +93,14 @@ dd {
 /* Light mode */
 @media (prefers-color-scheme: light) {
   hr {
-    border-top: #eee;
-    border-bottom: #fff;
+    color: #eee;
   }
 }
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   hr {
-    border-top: rgba( 137, 136, 135, .25 );
-    border-bottom: rgba( 137, 136, 135, .25 );
+    color: rgba( 137, 136, 135, .25 );
   }
 }
 
