@@ -24,7 +24,7 @@
     }
   }
 
-  @include media-query($on-palm) {
+  @include media-query(600px !default) {
     position: absolute;
     top: 9px;
     right: 30px / 2;
