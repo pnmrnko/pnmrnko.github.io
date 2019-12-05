@@ -43,7 +43,11 @@ html {
 }
 
 body {
+  scrollbar-width: auto;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body::-webkit-scrollbar {
+  width: 18px;
 }
 body::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
