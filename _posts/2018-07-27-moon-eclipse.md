@@ -3,7 +3,7 @@ layout: post
 title: Місячне затемнення
 date: 2018-07-27 15:58:59 +0200
 categories: astronomy
-author: Сергій Пономаренко
+author: "Сергій Пономаренко"
 permalink: /moon-eclipse-2018/
 ---
 
