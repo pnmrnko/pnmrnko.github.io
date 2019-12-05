@@ -29,8 +29,8 @@ html {
 /* Light mode */
 @media (prefers-color-scheme: light) {
   html {
-    --scrollbarBG: #CFD8DC;
-    --thumbBG: #90A4AE;
+    --scrollbarBG: rgb(241, 241, 241);
+    --thumbBG: rgb(194, 194, 194);
   }
 }
 
@@ -42,12 +42,7 @@ html {
   }
 }
 
-
-body::-webkit-scrollbar {
-  width: 11px;
-}
 body {
-  scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
 body::-webkit-scrollbar-track {
