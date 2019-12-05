@@ -44,29 +44,19 @@ Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est 
 
 Inline code is available with the `<code>` element. Snippets of multiple lines of code are supported through Pygments. Longer lines will automatically scroll horizontally when needed.
 
-{% highlight js %}
-// Example can be run directly in your JavaScript console
+{% highlight js %} // Example can be run directly in your JavaScript console
 
-// Create a function that takes two arguments and returns the sum of those arguments
-var adder = new Function("a", "b", "return a + b");
+// Create a function that takes two arguments and returns the sum of those arguments var adder = new Function("a", "b", "return a + b");
 
-// Call the function
-adder(2, 6);
-// > 8
-{% endhighlight %}
+// Call the function adder(2, 6); // > 8 {% endhighlight %}
 
 You may also optionally show code snippets with line numbers. Add `linenos` to the Pygments tags.
 
-{% highlight js linenos %}
-// Example can be run directly in your JavaScript console
+{% highlight js linenos %} // Example can be run directly in your JavaScript console
 
-// Create a function that takes two arguments and returns the sum of those arguments
-var adder = new Function("a", "b", "return a + b");
+// Create a function that takes two arguments and returns the sum of those arguments var adder = new Function("a", "b", "return a + b");
 
-// Call the function
-adder(2, 6);
-// > 8
-{% endhighlight %}
+// Call the function adder(2, 6); // > 8 {% endhighlight %}
 
 Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.
 
@@ -94,16 +84,11 @@ Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a p
 
 Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.
 
-<dl>
-<dt>HyperText Markup Language (HTML)</dt>
-<dd>The language used to describe and define the content of a Web page</dd>
+<dl> <dt>HyperText Markup Language (HTML)</dt> <dd>The language used to describe and define the content of a Web page</dd>
 
-<dt>Cascading Style Sheets (CSS)</dt>
-<dd>Used to describe the appearance of Web content</dd>
+<dt>Cascading Style Sheets (CSS)</dt> <dd>Used to describe the appearance of Web content</dd>
 
-<dt>JavaScript (JS)</dt>
-<dd>The programming language used to build advanced Web sites and applications</dd>
-</dl>
+<dt>JavaScript (JS)</dt> <dd>The programming language used to build advanced Web sites and applications</dd> </dl>
 
 Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.
 
@@ -111,39 +96,7 @@ Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo r
 
 Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Upvotes</th>
-<th>Downvotes</th>
-</tr>
-</thead>
-<tfoot>
-<tr>
-<td>Totals</td>
-<td>21</td>
-<td>23</td>
-</tr>
-</tfoot>
-<tbody>
-<tr>
-<td>Alice</td>
-<td>10</td>
-<td>11</td>
-</tr>
-<tr>
-<td>Bob</td>
-<td>4</td>
-<td>3</td>
-</tr>
-<tr>
-<td>Charlie</td>
-<td>7</td>
-<td>9</td>
-</tr>
-</tbody>
-</table>
+<table> <thead> <tr> <th>Name</th> <th>Upvotes</th> <th>Downvotes</th> </tr> </thead> <tfoot> <tr> <td>Totals</td> <td>21</td> <td>23</td> </tr> </tfoot> <tbody> <tr> <td>Alice</td> <td>10</td> <td>11</td> </tr> <tr> <td>Bob</td> <td>4</td> <td>3</td> </tr> <tr> <td>Charlie</td> <td>7</td> <td>9</td> </tr> </tbody> </table>
 
 Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.
 
@@ -151,4 +104,4 @@ Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur e
 
 Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a>
 
-\[^fn-sample_footnote\]: Handy! Now click the return link to go back.
+[^fn-sample_footnote]: Handy! Now click the return link to go back.
