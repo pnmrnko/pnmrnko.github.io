@@ -26,10 +26,23 @@ html {
 
 /* Scrollbar */
 
-html {
-  --scrollbarBG: #CFD8DC;
-  --thumbBG: #90A4AE;
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  html {
+    --scrollbarBG: #CFD8DC;
+    --thumbBG: #90A4AE;
+  }
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  html {
+    --scrollbarBG: rgb(26, 25, 24);
+    --thumbBG: rgb( 137, 136, 135      );
+  }
+}
+
+
 body::-webkit-scrollbar {
   width: 11px;
 }
