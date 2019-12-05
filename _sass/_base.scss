@@ -38,7 +38,7 @@ html {
 @media (prefers-color-scheme: dark) {
   html {
     --scrollbarBG: rgb(26, 25, 24);
-    --thumbBG: rgb( 137, 136, 135      );
+    --thumbBG: rgb( 137, 136, 135,  .25 );
   }
 }
 
