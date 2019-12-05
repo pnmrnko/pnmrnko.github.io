@@ -46,6 +46,8 @@ Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est 
 
 Inline code is available with the `<code>` element. Snippets of multiple lines of code are supported through Pygments. Longer lines will automatically scroll horizontally when needed.
 
+![](https://res.cloudinary.com/dmoax61op/image/upload/c_scale,w_auto:100,dpr_auto/v1575577280/https:/res.cloudinary.com/dmoax61op/image/upload/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA_%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_4_dsj72a.png)
+
 {% highlight js %}
 // Example can be run directly in your JavaScript console
 
