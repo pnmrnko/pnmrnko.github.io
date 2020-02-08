@@ -4,6 +4,7 @@ layout: default
 
 <article class="post">
   <h1 class="post-title">{{ page.title }}</h1>
+  {{ content }}
   <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">
     {% assign m = page.date | date: "%-m" %}
     {{ page.date | date: "%-d" }}
@@ -22,6 +23,5 @@ layout: default
       {% when '12' %}грудня
     {% endcase %}
     {{ page.date | date: "%Y" }} р.</time>
-  {{ content }}
 </article>
 
