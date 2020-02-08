@@ -117,10 +117,15 @@ figure {
   margin-inline-end: 0px;
 }
 
-figcaption, time {
+figcaption {
   font-style: italic;
   font-size: .8rem;
   margin-top: -.5rem;
+}
+
+time {
+  font-style: italic;
+  font-size: .8rem;
 }
 
 img {
