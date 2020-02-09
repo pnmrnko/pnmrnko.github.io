@@ -5,6 +5,9 @@ date: 2018-07-16 12:38:10 +0200
 ---
 Ракетний двигун П120Ц успішно пройшов вогневе стендове випробування. Воно здійснювалося на космодромі Куру́ у Французькій Гвіані. Про це у Твіттері [повідомив](https://twitter.com/arianespaceceo/status/1018840192696938497) керівник компанії Аріанспейс.
 
-<iframe src="https://www.youtube.com/embed/B4r_1db6xYo?theme=light&color=white" width="560" height="315" frameborder="0"></iframe>
+<figure style="padding-bottom:56.25%;height:0">
+    <iframe src="https://www.youtube.com/embed/B4r_1db6xYo?feature=oembed&amp;iv_load_policy=3&amp;showinfo=0&amp;color=white" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 100%; position: absolute"></iframe>
+    <figcaption>Перше вогневе випробування П120Ц</figcaption>
+</figure>
 
 П120Ц уперше випробували у зібраному вигляді. Він удвічі потужніший, ніж попереднє покоління рушіїв такого типу. Наступного року його почнуть встановлювати на ракету-носій Веґу-Ц, а з 2020 року - на нову Аріан-6.
