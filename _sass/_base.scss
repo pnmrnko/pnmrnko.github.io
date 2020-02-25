@@ -130,6 +130,10 @@ figcaption {
   height: 0; 
   overflow: hidden; 
   max-width: 100%; 
+
+  margin: 0 0 1rem;
+  border-radius: 5px;
+
   } 
 
 .embed-container-16-9 iframe, .embed-container-16-9 object, .embed-container-16-9 embed { 
