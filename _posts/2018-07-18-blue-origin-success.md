@@ -6,12 +6,10 @@ date: 2018-07-18 12:32:14 +0200
 
 Американська компанія Блу Ориджин успішно запустила космічний корабель Нью Шепард. Про це вона [повідомила](https://twitter.com/blueorigin/status/1019603442824724480) у Твіттері. 
 
-<figure>
-  <div class='embed-container-16-9'>
-    <iframe src='https://www.youtube.com/embed/aFY_0vIIzQE' frameborder='0' allowfullscreen>
-    </iframe>
-  </div>
-  <figcaption>Місія 9: Порятунок капсули під час будь-якої фази польоту</figcaption>
-</figure>
+<div class='embed-container-16-9'>
+  <iframe src='https://www.youtube.com/embed/aFY_0vIIzQE' frameborder='0' allowfullscreen>
+  </iframe>
+</div>
+
 
 Під час польоту випробували систему порятунку капсули. Якщо раніше її відстрілювали на низькій висоті, то цього разу це зробили у найвищій точці польоту ракети. Сьогоднішній тест був дуже важливим для Блу Ориджин — компанія зробила ще один крок до першого пасажирського польоту.
