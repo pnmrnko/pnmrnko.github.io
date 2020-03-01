@@ -7,7 +7,7 @@ date: 2018-07-16 12:38:10 +0200
 
 <figure>
   <div class='embed-container-16-9'>
-    <iframe src='https://www.youtube.com/watch?v=B4r_1db6xYo' frameborder='0' allowfullscreen>
+    <iframe src='https://www.youtube.com/embed/B4r_1db6xYo' frameborder='0' allowfullscreen>
     </iframe>
   </div>
   <figcaption>Перше вогневе випробування П120Ц — двигуна для Веги-Ц і Аріан-6</figcaption>
