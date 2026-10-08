@@ -7,7 +7,7 @@
 ## Робота локально
 
 ```sh
-hugo server -D        # http://localhost:1313, разом із чернетками
+hugo server -D -M     # http://localhost:1313, з чернетками, у пам’яті
 hugo --gc --minify    # збірка в public/
 ```
 
