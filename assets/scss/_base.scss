@@ -13,6 +13,9 @@ body {
   line-height: var(--body-line-height);
   color: var(--body-color);
   background-color: var(--body-bg);
+  // A word longer than the line, such as a bare URL, breaks instead of
+  // pushing the page sideways on a phone; ordinary text is unaffected.
+  overflow-wrap: break-word;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
