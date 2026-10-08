@@ -30,7 +30,7 @@ disableKinds = ["taxonomy", "term"]
   weight = 1
   title = "pnmrnko"
   [languages.uk.params]
-    tagline = "Нотатки"
+    tagline = "Життя і сміття"
     description = "Особистий блог."
     ogLocale = "uk_UA"
 
@@ -40,7 +40,7 @@ disableKinds = ["taxonomy", "term"]
   weight = 2
   title = "pnmrnko"
   [languages.en.params]
-    tagline = "Notes"
+    tagline = "Life and Lies"
     description = "Personal blog."
     ogLocale = "en_US"
 
