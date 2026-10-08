@@ -192,3 +192,11 @@ a:focus-visible {
     color: var(--gray-600);
   }
 }
+
+// Poole's yellow note is too bright on the dark background
+@media (prefers-color-scheme: dark) {
+  .message {
+    color: var(--gray-100);
+    background-color: rgba(250, 176, 5, .14);
+  }
+}
