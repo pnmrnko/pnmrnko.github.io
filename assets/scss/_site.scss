@@ -83,9 +83,48 @@ html {
     }
   }
 
+  // Inside the box: the edge fade below would mask an outline outside it
   &:focus-visible {
     outline: 2px solid var(--link-color);
-    outline-offset: 2px;
+    outline-offset: -2px;
+  }
+}
+
+// A table that scrolls fades out at the edge it can still scroll towards,
+// as Aegea's menu band does on narrow screens (lsschool.pp.ua). Aegea
+// toggles the fades with JavaScript; here a scroll-driven animation moves
+// them with the scroll position. A table that fits has no scroll timeline
+// and so no fade, and a browser without scroll timelines shows none.
+@property --fade-start {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --fade-end {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@keyframes table-scroll-fade {
+  0% { --fade-start: 0px; --fade-end: 28px; }
+  10% { --fade-start: 28px; }
+  90% { --fade-end: 28px; }
+  100% { --fade-start: 28px; --fade-end: 0px; }
+}
+
+@supports (animation-timeline: scroll()) {
+  .table-scroll {
+    mask-image: linear-gradient(to right,
+      transparent 0,
+      rgba(0, 0, 0, .25) calc(var(--fade-start) / 2),
+      #000 var(--fade-start),
+      #000 calc(100% - var(--fade-end)),
+      rgba(0, 0, 0, .25) calc(100% - var(--fade-end) / 2),
+      transparent 100%);
+    animation: table-scroll-fade linear both;
+    animation-timeline: scroll(self inline);
   }
 }
 
