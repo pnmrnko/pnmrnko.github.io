@@ -7,7 +7,7 @@ toc: true
 
 After formulas, it’s code’s turn. A code block in a post is three backticks and the name of a language, and the site build does the rest: Hugo colours the code before publishing, so the browser only gets finished HTML. Its built-in highlighter, Chroma, knows about 250 languages, and the ones it doesn’t know can be described by hand.
 
-To put it through its paces, I’ll take one map task from a formula to an edit.
+To put it through its paces, here’s one map task, from a formula to an edit.
 
 ## Distance between two points
 
@@ -207,7 +207,7 @@ And Overpass itself answers with JSON like this:
 
 ## An edit in Level0L
 
-Level0 is an OpenStreetMap web editor where objects are edited as text. I call its format Level0L and have a VS Code extension for it, and now highlighting here too (`data/syntax/level0l.yaml`). Line numbers and highlighted lines work for these languages as well; here the changed and new lines are highlighted:
+Level0 is an OpenStreetMap web editor where objects are edited as text. Its format is called Level0L; there’s a VS Code extension for it, and now highlighting here too (`data/syntax/level0l.yaml`). Line numbers and highlighted lines work for these languages as well; here the changed and new lines are highlighted:
 
 ```l0l {linenos=table hl_lines="8-9 11-14"}
 changeset
@@ -290,7 +290,7 @@ And the Hugo settings all of this depends on are in `hugo.toml`:
 
 ## A cabinet of curiosities
 
-Finally, “Hello, map!” in languages I’ll probably never write for OpenStreetMap but Chroma colours all the same. Highlighting works in the middle of a sentence too: {{< highlight go "hl_inline=true" >}}fmt.Println("Hello, map!"){{< /highlight >}}.
+Finally, “Hello, map!” in languages far from OpenStreetMap that Chroma colours all the same. Highlighting works in the middle of a sentence too: {{< highlight go "hl_inline=true" >}}fmt.Println("Hello, map!"){{< /highlight >}}.
 
 Fortran:
 
@@ -415,4 +415,4 @@ Brainfuck:
 >>+.
 ```
 
-The last one prints “Hello World!”: the classic program, nothing map-specific about it.
+The last one is the classic Brainfuck program that prints “Hello World!”.

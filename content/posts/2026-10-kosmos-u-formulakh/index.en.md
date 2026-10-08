@@ -7,7 +7,7 @@ toc: true
 
 The blog can show formulas now. They’re written in LaTeX right in the text of a post: inline between dollar signs, like $E = mc^2$, or as a separate block between double ones. When the site is built they become MathML, so the browser draws them itself, in the same New Computer Modern as the text. No JavaScript at all.
 
-To put it through its paces, here are some favourite space formulas, from a rocket on the pad to the calendar.
+To put it through its paces, here are some space formulas, from a rocket on the pad to the calendar.
 
 ## The rocket equation
 
