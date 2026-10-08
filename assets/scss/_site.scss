@@ -9,13 +9,28 @@ html {
 // instead of sitting in the middle, as on Ilya Birman's blog.
 .container {
   margin-left: 0;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
 
-// The logo's x-height line (the top of its lowercase letters) sits as far
-// from the top of the window as the text column sits from its left edge;
+// Page margin: Poole's 1.5rem, and on phones 4% of the screen width, as
+// Aegea does below 1024px (lsschool.pp.ua). Not under 1rem, so the logo's
+// sparkline tail, which hangs about 14px left of the p, stays off the edge.
+:root {
+  --gutter: var(--spacer-2);
+}
+
+@media (max-width: 38em) {
+  :root {
+    --gutter: max(4vw, 1rem);
+  }
+}
+
+// The logo's x-height line (the top of its lowercase letters) sits one
+// page margin from the top of the window, as the text does from the left;
 // the k's ascender and the raised vowels reach up into that margin.
 .masthead {
-  padding-top: calc(var(--spacer-2) - var(--logo-unit) * (var(--logo-vb-baseline) - var(--logo-vb-xheight)));
+  padding-top: calc(var(--gutter) - var(--logo-unit) * (var(--logo-vb-baseline) - var(--logo-vb-xheight)));
 }
 
 // Site additions
