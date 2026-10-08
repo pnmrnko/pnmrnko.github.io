@@ -8,24 +8,22 @@ pre {
   font-family: var(--code-font);
 }
 
-code {
-  font-size: 85%;
+// Code's lowercase letters are as tall as the text's: NewCM Mono's x is
+// .4375em high against NewCM Sans's .453em, so code is set slightly larger
+// than the text around it. font-size-adjust does it from the font's own
+// x-height (.431 in its metrics), so a fallback mono font lines up too.
+code,
+pre {
+  font-size-adjust: .446;
 }
 
-// A block's code is sized on the pre, not the code, so that every line,
-// highlighted (display: block) or not, has the same height
 pre {
   display: block;
   margin-top: 0;
   margin-bottom: var(--spacer-3);
   overflow: auto;
-  font-size: 85%;
   line-height: 1.5;
   tab-size: 4;
-
-  code {
-    font-size: 100%;
-  }
 }
 
 .highlight {
