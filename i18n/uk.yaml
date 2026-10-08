@@ -6,7 +6,7 @@ feed: Стрічка Atom
 related: Інші дописи
 toc: Зміст
 noPosts: Тут поки немає дописів.
-dateFormat: 2 January 2006
+dateFormat: "2 January 2006\u00a0р."
 posts:
   one: "{{ .Count }} допис"
   few: "{{ .Count }} дописи"
