@@ -84,6 +84,11 @@ html {
 .archive-list {
   padding-left: 0;
   list-style: none;
+
+  // Same gap as in the related posts, for titles that wrap
+  li + li {
+    margin-top: .5rem;
+  }
 }
 
 .posts-empty {

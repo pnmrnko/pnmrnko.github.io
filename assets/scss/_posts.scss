@@ -53,6 +53,12 @@
   padding-left: 0;
   list-style: none;
 
+  // A gap between entries, so titles that wrap don't run together; the
+  // lines within a title keep the text's leading
+  li + li {
+    margin-top: .5rem;
+  }
+
   h3 {
     margin-top: 0;
   }
