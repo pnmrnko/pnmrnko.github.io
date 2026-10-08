@@ -72,6 +72,15 @@ html {
     &:last-child {
       padding-inline-end: 0;
     }
+
+    // Set by render-table.html from each column's longest cell
+    &.nowrap {
+      white-space: nowrap;
+    }
+
+    &.measure {
+      min-width: 25ch;
+    }
   }
 
   &:focus-visible {

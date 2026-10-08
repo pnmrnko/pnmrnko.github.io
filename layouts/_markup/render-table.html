@@ -3,7 +3,30 @@
   sideways on its own (a finger swipe on a phone) instead of widening the
   page. The wrapper is a labelled, focusable region so the keyboard can
   scroll it too.
+
+  Wrapping is decided per column from its content, by line length: a
+  column whose longest cell fits in $measure characters never wraps
+  (names, numbers), a longer one wraps but no narrower than $measure
+  characters, about the shortest line that still reads well in a narrow
+  column. Once the columns can't shrink any further, the table scrolls.
 */ -}}
+{{- $measure := 25 }}
+{{- $longest := dict }}
+{{- range $part := slice .THead .TBody }}
+  {{- range $part }}
+    {{- range $i, $cell := . }}
+      {{- $n := .Text | plainify | htmlUnescape | countrunes }}
+      {{- $key := string $i }}
+      {{- if gt $n (index $longest $key | default 0) }}
+        {{- $longest = merge $longest (dict $key $n) }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- $class := dict }}
+{{- range $key, $n := $longest }}
+  {{- $class = merge $class (dict $key (cond (le $n $measure) "nowrap" "measure")) }}
+{{- end }}
 <div class="table-scroll" role="region" aria-label="{{ i18n "table" }}" tabindex="0">
 <table
   {{- range $k, $v := .Attributes }}
@@ -12,8 +35,8 @@
   <thead>
     {{- range .THead }}
     <tr>
-      {{- range . }}
-      <th{{ with .Alignment }}{{ printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}{{ end }}>{{ .Text }}</th>
+      {{- range $i, $cell := . }}
+      <th class="{{ index $class (string $i) }}"{{ with .Alignment }}{{ printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}{{ end }}>{{ .Text }}</th>
       {{- end }}
     </tr>
     {{- end }}
@@ -21,8 +44,8 @@
   <tbody>
     {{- range .TBody }}
     <tr>
-      {{- range . }}
-      <td{{ with .Alignment }}{{ printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}{{ end }}>{{ .Text }}</td>
+      {{- range $i, $cell := . }}
+      <td class="{{ index $class (string $i) }}"{{ with .Alignment }}{{ printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}{{ end }}>{{ .Text }}</td>
       {{- end }}
     </tr>
     {{- end }}
