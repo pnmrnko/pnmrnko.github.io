@@ -1,0 +1,35 @@
+{{- /*
+  LaTeX → MathML at build time (KaTeX inside Hugo), so pages ship no math
+  JavaScript; the browser lays the MathML out with NewCM Sans Math.
+  A formula that doesn't parse fails the build and names the file.
+
+  Chrome follows MathML Core and ignores mathvariant (\mathbb, \mathcal,
+  \mathbf …), so those letters are swapped for their Unicode math
+  alphanumerics from data/mathalpha.json (tools/build-mathalpha.py).
+*/ -}}
+{{- $opts := dict "output" "mathml" "displayMode" (eq .Type "block") "throwOnError" true }}
+{{- with try (transform.ToMath .Inner $opts) }}
+  {{- with .Err }}
+    {{- errorf "Can't render math in %s: %s" $.Position . }}
+  {{- else }}
+    {{- $html := string .Value }}
+    {{- $re := `<(mi|mn|mtext)([^>]*?) mathvariant="([a-z-]+)"([^>]*)>([^<]*)</(?:mi|mn|mtext)>` }}
+    {{- range findRESubmatch $re $html }}
+      {{- $full := index . 0 }}
+      {{- $tag := index . 1 }}
+      {{- $map := index hugo.Data.mathalpha (index . 3) }}
+      {{- if $map }}
+        {{- $text := "" }}
+        {{- range split (index . 5) "" }}
+          {{- $text = printf "%s%s" $text (index $map . | default .) }}
+        {{- end }}
+        {{- $html = replace $html $full (printf "<%s%s%s>%s</%s>" $tag (index . 2) (index . 4) $text $tag) }}
+      {{- end }}
+    {{- end }}
+    {{- if eq $.Type "block" }}
+<div class="math-display">{{ $html | safeHTML }}</div>
+    {{- else }}
+      {{- $html | safeHTML }}
+    {{- end }}
+  {{- end }}
+{{- end -}}

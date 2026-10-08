@@ -61,6 +61,28 @@ ffmpeg -ss 2.56 -i src.mp4 -frames:v 64 -an -c:v libx264 -crf 24 -preset veryslo
 ffmpeg -ss 2.56 -i src.mp4 -frames:v 1 -q:v 2 назва.jpg
 ```
 
+## Шрифти
+
+Увесь сайт набрано New Computer Modern: текст — New CM Sans, код — New CM
+Mono, формули — New CM Sans Math. WOFF2-файли лежать у `static/fonts/newcm/`,
+правила `@font-face` — в `assets/scss/_fonts.scss`; і те, й інше генерує
+
+```sh
+python3 tools/build-fonts.py   # з TeX Live; потрібні fontTools і brotli
+```
+
+Текстові накреслення порізано за письменами (латиниця, кирилиця, грецька…),
+тож сторінка завантажує лише те, що на ній є. Доступні також New CM Serif і
+New CM Math, якщо колись знадобляться. Ліцензії — `static/fonts/newcm/LICENSE.txt`.
+
+## Формули
+
+LaTeX між `$…$` або `\(…\)` — у рядку, між `$$…$$` або `\[…\]` — окремим
+блоком. Hugo перетворює його на MathML ще під час збірки, тож на сторінках
+немає JavaScript; браузер малює формули шрифтом New CM Sans Math. Помилка
+в формулі зупиняє збірку й називає файл. Приклади — у чернетці
+`content/typography.uk.md` (`hugo server -D -M`, сторінка `/typography/`).
+
 ## Старий блог
 
 Дописи 2006–2018 перенесено з Aegea (pnmrnko.pp.ua). Фото з нього не

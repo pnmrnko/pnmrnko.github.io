@@ -252,3 +252,52 @@ a:focus-visible {
     background-color: rgba(250, 176, 5, .14);
   }
 }
+
+// Math: MathML from the passthrough render hook, set in NewCM Sans Math so it
+// matches the body text. Text inside formulas (\text{…}) falls back to the
+// body face for Cyrillic.
+math {
+  font-family: var(--math-font);
+  font-size: 1.05em;
+}
+
+.math-display {
+  margin: var(--spacer) 0 var(--spacer-2);
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  math {
+    margin: 0;
+  }
+}
+
+// MathML Core pads every table cell, so Chrome leaves a gap between a
+// matrix's brackets (or a cases brace) and its contents; Firefox doesn't.
+mtd:first-child {
+  padding-inline-start: 0;
+}
+
+mtd:last-child {
+  padding-inline-end: 0;
+}
+
+// Chrome also ignores columnalign, which KaTeX sets on cases ("left left")
+// and on aligned/align ("right left right left …").
+mtable[columnalign="left left"] > mtr > mtd {
+  text-align: left;
+}
+
+mtable[columnalign^="right left"] > mtr > mtd {
+  &:nth-child(odd) {
+    text-align: right;
+  }
+
+  &:nth-child(even) {
+    text-align: left;
+  }
+}
+
+// …and columnspacing: aligned/align use "0em" so the halves meet at the =.
+mtable[columnspacing="0em"] > mtr > mtd {
+  padding-inline: 0;
+}

@@ -26,8 +26,10 @@
   --blue-400: #4dabf7;
   --yellow-100: #fff3bf;
 
-  --body-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --body-font-size: 16px;
+  --body-font: "NewCM Sans", "NewCM Sans Fallback", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  // NewCM Sans has a small x-height (0.444 em against ~0.53 for system
+  // sans faces), so it needs a size up to read like 16px text did.
+  --body-font-size: 1.0625rem;
   --body-line-height: 1.5;
   --body-color: var(--gray-700);
   --body-bg: #fff;
@@ -40,13 +42,21 @@
   --border-color: var(--gray-300);
   --border-radius: .25rem;
 
-  --code-font: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --code-font: "NewCM Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  // Cyrillic in \text{} comes from NewCM Sans, not the browser's generic math font
+  --math-font: "NewCM Sans Math", "NewCM Sans", "NewCM Sans Fallback", math;
   --code-color: var(--grape);
   --code-bg: var(--gray-000);
 
   --spacer: 1rem;
   --spacer-2: calc(var(--spacer) * 1.5);
   --spacer-3: calc(var(--spacer) * 3);
+}
+
+@media (min-width: 38em) {
+  :root {
+    --body-font-size: 1.125rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

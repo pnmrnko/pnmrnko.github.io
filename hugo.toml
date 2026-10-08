@@ -67,3 +67,11 @@ disableKinds = ["taxonomy", "term"]
 
 [markup.goldmark.extensions.extras.mark]
   enable = true
+
+# LaTeX between these delimiters is passed through untouched and turned into
+# MathML at build time by layouts/_markup/render-passthrough.html.
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]
