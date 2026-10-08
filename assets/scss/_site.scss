@@ -79,12 +79,13 @@
 }
 
 // Letters on the text baseline, sparkline hanging below like a descender;
-// the p, not the sparkline's tail, lines up with the text column.
+// the p, not the sparkline's tail, lines up with the text column. It sits
+// 58 units (about 2px) inside the edge: flush at 424 it looked too far left.
 .logo {
   width: auto;
   height: var(--logo-height);
   aspect-ratio: 5860 / 1566;
-  margin-left: calc(var(--logo-height) * -424 / 1566);
+  margin-left: calc(var(--logo-height) * -366 / 1566);
   vertical-align: calc(var(--logo-height) * -961 / 1566);
 }
 
