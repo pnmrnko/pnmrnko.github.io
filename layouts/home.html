@@ -1,5 +1,8 @@
 {{ define "main" }}
 {{- $pager := .Paginate (where site.RegularPages "Section" "posts") }}
+{{- with $pager.Prev }}
+{{ partial "pager-link.html" (dict "page" . "rel" "prev" "label" (i18n "newer") "region" (i18n "newerPosts") "key" "↑") }}
+{{- end }}
 <div class="posts">
   {{- range $pager.Pages }}
   <article class="post">
@@ -14,18 +17,31 @@
   {{- end }}
 </div>
 
+{{- with $pager.Next }}
+{{ partial "pager-link.html" (dict "page" . "rel" "next" "label" (i18n "older") "region" (i18n "olderPosts") "key" "↓") }}
+{{- end }}
+
 {{- if gt $pager.TotalPages 1 }}
-<nav class="pagination" aria-label="{{ i18n "pagination" }}">
-  {{- with $pager.Next }}
-  <a class="pagination-item older" href="{{ .URL }}" rel="next">{{ i18n "older" }}</a>
-  {{- else }}
-  <span class="pagination-item older">{{ i18n "older" }}</span>
-  {{- end }}
-  {{- with $pager.Prev }}
-  <a class="pagination-item newer" href="{{ .URL }}" rel="prev">{{ i18n "newer" }}</a>
-  {{- else }}
-  <span class="pagination-item newer">{{ i18n "newer" }}</span>
-  {{- end }}
-</nav>
+<script>
+  // Ctrl + ↓ / ↑ (⌥ on a Mac, where Ctrl + arrows belong to the system)
+  // follow the "Раніше" / "Пізніше" links, as on Aegea blogs.
+  (() => {
+    const mac = /Mac|iPhone|iPad/.test(navigator.userAgentData?.platform || navigator.platform);
+    if (mac) {
+      for (const k of document.querySelectorAll(".pager-mod")) k.textContent = "⌥";
+      for (const a of document.querySelectorAll(".pager-link")) a.setAttribute("aria-keyshortcuts", a.getAttribute("aria-keyshortcuts").replace("Control", "Alt"));
+    }
+    document.addEventListener("keydown", (e) => {
+      const mod = mac ? e.altKey && !e.ctrlKey : e.ctrlKey && !e.altKey;
+      if (!mod || e.shiftKey || e.metaKey || e.target.closest?.("input, textarea, select, [contenteditable]")) return;
+      const rel = { ArrowDown: "next", ArrowUp: "prev" }[e.key];
+      const link = rel && document.querySelector(`.pager-link[rel="${rel}"]`);
+      if (link) {
+        e.preventDefault();
+        location.href = link.href;
+      }
+    });
+  })();
+</script>
 {{- end }}
 {{ end }}

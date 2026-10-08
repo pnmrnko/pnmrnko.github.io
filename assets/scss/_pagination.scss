@@ -1,52 +1,36 @@
 // Pagination
 //
-// Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
-// there are no more previous or next posts to show.
+// Aegea-style paging instead of Poole's two buttons: "Пізніше" above the
+// posts, "Раніше" below them, each with its keyboard shortcut (handled in
+// layouts/home.html). The hint is hidden where touch is the main input.
 
-.pagination {
+.pager {
   display: flex;
-  margin: 0 -1.5rem var(--spacer);
-  color: var(--gray-500);
-  text-align: center;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .25rem .6rem;
 }
 
-// Pagination items can be `span`s or `a`s
-.pagination-item {
-  display: block;
-  padding: var(--spacer);
-  text-decoration: none;
-  border: solid var(--border-color);
-  border-width: 1px 0;
+.pager-prev {
+  margin-bottom: var(--spacer-3);
+}
 
-  &:first-child {
-    margin-bottom: -1px;
+.pager-next {
+  margin-top: var(--spacer-2);
+}
+
+.pager-key {
+  font-size: .75rem;
+  color: var(--body-color);
+  white-space: nowrap;
+
+  kbd {
+    font-family: inherit;
   }
 }
 
-// Only provide a hover state for linked pagination items
-a.pagination-item:hover {
-  background-color: var(--border-color);
-}
-
-@media (min-width: 30em) {
-  .pagination {
-    margin: var(--spacer-3) 0;
-  }
-
-  .pagination-item {
-    float: left;
-    width: 50%;
-    border-width: 1px;
-
-    &:first-child {
-      margin-bottom: 0;
-      border-top-left-radius: var(--border-radius);
-      border-bottom-left-radius: var(--border-radius);
-    }
-    &:last-child {
-      margin-left: -1px;
-      border-top-right-radius: var(--border-radius);
-      border-bottom-right-radius: var(--border-radius);
-    }
+@media (hover: none) and (pointer: coarse) {
+  .pager-key {
+    display: none;
   }
 }

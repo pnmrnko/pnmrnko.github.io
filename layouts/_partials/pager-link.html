@@ -1,0 +1,10 @@
+{{- /*
+  One "Раніше" / "Пізніше" link with its keyboard hint, after Aegea.
+  Params: page (the pager page to go to), rel ("next" = older, "prev" =
+  newer), label, region (aria-label of the nav), key ("↓" or "↑").
+*/ -}}
+{{- $arrow := cond (eq .rel "next") "ArrowDown" "ArrowUp" }}
+<nav class="pager pager-{{ .rel }}" aria-label="{{ .region }}">
+  <a class="pager-link" href="{{ .page.URL }}" rel="{{ .rel }}" aria-keyshortcuts="Control+{{ $arrow }}">{{ .label }}</a>
+  <span class="pager-key" aria-hidden="true"><kbd class="pager-mod">Ctrl</kbd> + <kbd>{{ .key }}</kbd></span>
+</nav>

@@ -3,12 +3,9 @@ archive: Archive
 archiveIntro: All posts by month.
 about: About
 feed: Atom feed
-older: Older
-newer: Newer
 related: More posts
 toc: Contents
 noPosts: No posts here yet.
-pagination: Post pages
 dateFormat: January 2, 2006
 posts:
   one: "{{ .Count }} post"
@@ -30,3 +27,7 @@ watchOn: "Watch on {{ .Provider }}"
 archiveLink: Post archive
 footerNav: Site navigation
 versionOf_uk: Ukrainian version
+older: Earlier
+newer: Later
+olderPosts: Older posts
+newerPosts: Newer posts

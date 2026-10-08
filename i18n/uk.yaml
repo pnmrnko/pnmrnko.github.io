@@ -3,12 +3,9 @@ archive: Архів
 archiveIntro: Усі дописи за місяцями.
 about: Про мене
 feed: Стрічка Atom
-older: Старіші
-newer: Новіші
 related: Інші дописи
 toc: Зміст
 noPosts: Тут поки немає дописів.
-pagination: Сторінки дописів
 dateFormat: 2 January 2006
 posts:
   one: "{{ .Count }} допис"
@@ -32,3 +29,7 @@ watchOn: "Дивитися на {{ .Provider }}"
 archiveLink: Архів дописів
 footerNav: Навігація сайтом
 versionOf_en: Англомовна версія
+older: Раніше
+newer: Пізніше
+olderPosts: Старіші дописи
+newerPosts: Новіші дописи
