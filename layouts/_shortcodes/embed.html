@@ -11,7 +11,7 @@
 {{- $src := .Get "src" }}
 {{- $ratio := true }}
 {{- if eq $provider "youtube" }}
-  {{- $src = printf "https://www.youtube-nocookie.com/embed/%s" $id }}
+  {{- $src = printf "https://www.youtube-nocookie.com/embed/%s?hl=%s" $id site.Language.Lang }}
 {{- else if eq $provider "vimeo" }}
   {{- $src = printf "https://player.vimeo.com/video/%s?dnt=1" $id }}
 {{- else if eq $provider "coub" }}
