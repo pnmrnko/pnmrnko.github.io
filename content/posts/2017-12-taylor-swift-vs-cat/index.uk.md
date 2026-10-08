@@ -9,4 +9,4 @@ lastmod: 2017-12-21T22:02:21+02:00
 
 {{< loop name="taylor-swift-vs-cat" title="Тейлор Свіфт проти кота" >}}
 
-{{< embed provider="soundcloud" id="253029665" title="Meredith Brooks — Bitch" >}}
+{{< embed provider="spotify" id="3i6qNxyVgIdUZTTi5m25EM" title="Meredith Brooks — Bitch" >}}

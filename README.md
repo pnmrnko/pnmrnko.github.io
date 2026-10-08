@@ -43,17 +43,20 @@ hugo new content posts/2026-11-nazva/index.uk.md
 ```
 {{< photo src="P1110004.jpg" caption="Підпис" >}}
 {{< embed provider="youtube" id="YH3c1QZzRK4" title="Назва" >}}
+{{< embed provider="spotify" id="2xWVD6aecDSHroyPVVcPpa" title="Виконавець — Трек" >}}
 {{< embed provider="soundcloud" id="396827769" title="Виконавець — Трек" >}}
 {{< embed provider="bandcamp" id="3216491533" title="Виконавець — Трек" >}}
 ```
 
 Фото лежить у теці допису поруч з `index.uk.md`; поки файлу немає, шорткод
 нічого не показує. Великі фото зменшуються до 1440 px у WebP.
-`embed` уміє `youtube`, `vimeo`, `coub`, `soundcloud`, `bandcamp`; для відео,
-яке власник не дозволяє вбудовувати, додайте `link="true"` — буде
-картка-посилання. Для музики краще знайти трек на SoundCloud чи Bandcamp:
-там `id` — числовий ID треку (у SoundCloud — з коду вставки, `tracks/…`; у
-Bandcamp — з `EmbeddedPlayer/track=…` у «Share / Embed»).
+`embed` уміє `youtube`, `vimeo`, `coub`, `spotify`, `soundcloud`, `bandcamp`;
+для відео, яке власник не дозволяє вбудовувати, додайте `link="true"` — буде
+картка-посилання. Для музики краще знайти трек на Spotify: `id` — частина
+посилання після `open.spotify.com/track/` (без `?si=…`). Без входу в Spotify
+плеєр грає 30-секундний уривок; SoundCloud і Bandcamp грають повністю всім.
+У SoundCloud `id` — числовий ID треку з коду вставки (`tracks/…`), у Bandcamp —
+з `EmbeddedPlayer/track=…` у «Share / Embed».
 
 Короткий беззвучний кліп замість GIF — `{{< loop name="назва" title="…" >}}`;
 поруч із дописом мають лежати `назва.webm` (AV1), `назва.mp4` (H.264) і

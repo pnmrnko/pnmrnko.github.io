@@ -7,4 +7,4 @@ lastmod: 2018-01-30T23:25:39+02:00
 
 A really driving track came to mind today. I couldn’t find it for ages, until I realised I’d heard it in NFS Most Wanted 2012. How many races I won to it!
 
-{{< embed provider="soundcloud" id="74565166" title="The Joy Formidable — Little Blimp" >}}
+{{< embed provider="spotify" id="3hzazRMmre9PKpSTZ9XQmM" title="The Joy Formidable — Little Blimp" >}}

@@ -9,4 +9,4 @@ Saw this coub and loved it right away!
 
 {{< loop name="taylor-swift-vs-cat" title="Taylor Swift vs. Cat" >}}
 
-{{< embed provider="soundcloud" id="253029665" title="Meredith Brooks — Bitch" >}}
+{{< embed provider="spotify" id="3i6qNxyVgIdUZTTi5m25EM" title="Meredith Brooks — Bitch" >}}

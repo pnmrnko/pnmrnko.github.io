@@ -261,6 +261,12 @@ a:focus-visible {
 }
 
 // Single-track audio players at their own fixed heights
+.embed-spotify .embed-frame {
+  // The player rounds its own corners and leaves them transparent
+  background-color: transparent;
+  border-radius: 12px;
+}
+.embed-spotify iframe { height: 152px; }
 .embed-soundcloud iframe { height: 166px; }
 .embed-bandcamp iframe { height: 120px; }
 // Bandcamp's player stops growing at 700px; a wider frame shows past its edge

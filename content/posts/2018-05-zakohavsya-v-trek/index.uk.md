@@ -8,4 +8,4 @@ date: 2018-05-12T11:56:42+03:00
 
 А цей трек тепер обожнюю:
 
-{{< embed provider="soundcloud" id="396827769" title="Amber Mark — Love Me Right" >}}
+{{< embed provider="spotify" id="2xWVD6aecDSHroyPVVcPpa" title="Amber Mark — Love Me Right" >}}
