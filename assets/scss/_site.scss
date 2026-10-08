@@ -46,6 +46,24 @@ html {
   gap: .5rem var(--spacer-2);
 }
 
+// Markdown tables (render-table.html): a table wider than the column
+// scrolls inside its wrapper. overscroll-behavior keeps a swipe that hits
+// the end from turning into the browser's back gesture.
+.table-scroll {
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+
+  table {
+    margin-bottom: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+  }
+}
+
 // Archive: posts by month, no markers, flush with the month heading
 .archive-list {
   padding-left: 0;
