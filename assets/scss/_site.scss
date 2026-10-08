@@ -61,9 +61,13 @@ html {
     margin-bottom: 0;
   }
 
+  // Top left unless the Markdown says otherwise (|:--:| sets text-align
+  // inline, which wins)
   th,
   td {
     padding-inline: .75rem;
+    text-align: left;
+    vertical-align: top;
 
     &:first-child {
       padding-inline-start: 0;
