@@ -1,0 +1,41 @@
+{{- /*
+  A short silent clip that plays like a GIF:
+  {{< loop name="taylor-swift-vs-cat" title="…" caption="…" >}}
+  Expects <name>.webm (AV1), <name>.mp4 (H.264) and <name>.jpg (poster) in
+  the post bundle. Click pauses; with reduced motion it starts paused.
+*/ -}}
+{{- $name := .Get "name" }}
+{{- $webm := .Page.Resources.Get (printf "%s.webm" $name) }}
+{{- $mp4 := .Page.Resources.Get (printf "%s.mp4" $name) }}
+{{- $poster := .Page.Resources.Get (printf "%s.jpg" $name) }}
+{{- if not (and $webm $mp4 $poster) }}
+  {{- errorf "loop: %s.webm, .mp4 and .jpg are required next to %s" $name .Page.File.Path }}
+{{- end }}
+{{- $posterWebp := $poster.Resize (printf "%dx webp q80" $poster.Width) }}
+<figure class="loop">
+  <video autoplay muted loop playsinline preload="auto" width="{{ $poster.Width }}" height="{{ $poster.Height }}"
+    poster="{{ $posterWebp.RelPermalink }}" aria-label="{{ .Get "title" }}">
+    <source src="{{ $webm.RelPermalink }}" type='video/webm; codecs="av01.0.05M.08"'>
+    <source src="{{ $mp4.RelPermalink }}" type='video/mp4; codecs="avc1.64001F"'>
+  </video>
+  {{- with .Get "caption" }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+{{- if not (.Page.Store.Get "loopScript") }}
+{{- .Page.Store.Set "loopScript" true }}
+<script>
+  (() => {
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    for (const video of document.querySelectorAll(".loop video")) {
+      if (still) {
+        video.removeAttribute("autoplay");
+        video.pause();
+        video.controls = true;
+      } else {
+        video.addEventListener("click", () => (video.paused ? video.play() : video.pause()));
+      }
+    }
+  })();
+</script>
+{{- end }}

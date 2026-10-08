@@ -50,6 +50,17 @@ hugo new content posts/2026-11-nazva/index.uk.md
 `embed` уміє `youtube`, `vimeo`, `coub`, `soundcloud`; для відео, яке власник
 не дозволяє вбудовувати, додайте `link="true"` — буде картка-посилання.
 
+Короткий беззвучний кліп замість GIF — `{{< loop name="назва" title="…" >}}`;
+поруч із дописом мають лежати `назва.webm` (AV1), `назва.mp4` (H.264) і
+`назва.jpg` (перший кадр). Наприклад:
+
+```sh
+ffmpeg -ss 2.56 -i src.mp4 -frames:v 64 -an -c:v libsvtav1 -crf 36 -preset 4 -g 64 назва.webm
+ffmpeg -ss 2.56 -i src.mp4 -frames:v 64 -an -c:v libx264 -crf 24 -preset veryslow \
+  -profile:v high -level:v 3.1 -pix_fmt yuv420p -movflags +faststart назва.mp4
+ffmpeg -ss 2.56 -i src.mp4 -frames:v 1 -q:v 2 назва.jpg
+```
+
 ## Старий блог
 
 Дописи 2006–2018 перенесено з Aegea (pnmrnko.pp.ua). Фото з нього не

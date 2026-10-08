@@ -172,3 +172,23 @@ a:focus-visible {
   font-weight: 600;
   color: var(--heading-color);
 }
+
+// Silent looping clips that stand in for GIFs
+.loop {
+  margin: var(--spacer-2) 0;
+
+  video {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    background-color: var(--code-bg);
+    border-radius: var(--border-radius);
+  }
+
+  figcaption {
+    margin-top: .5rem;
+    font-size: .875rem;
+    color: var(--gray-600);
+  }
+}
