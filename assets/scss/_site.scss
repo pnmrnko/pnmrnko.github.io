@@ -1,0 +1,93 @@
+// Site additions
+//
+// Things Poole doesn't ship: the masthead navigation with the language switch,
+// post summaries, and readable syntax colors in dark mode.
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem var(--spacer-2);
+}
+
+.masthead-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer);
+  font-size: .875rem;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    opacity: .5;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+
+    &[aria-current="page"] {
+      opacity: 1;
+    }
+  }
+}
+
+.post-more {
+  font-weight: 500;
+}
+
+.posts-empty {
+  color: var(--gray-600);
+}
+
+.page-subtitle {
+  display: block;
+  margin-top: -.5rem;
+  margin-bottom: var(--spacer);
+  color: var(--gray-600);
+}
+
+.translation-note {
+  font-size: .875rem;
+  color: var(--gray-600);
+}
+
+.footer {
+  color: var(--gray-600);
+
+  a {
+    color: inherit;
+  }
+}
+
+// Visible focus for keyboard users
+a:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+  border-radius: .125rem;
+}
+
+// Poole's syntax palette is tuned for a light background; lift the darkest
+// tokens so they stay readable on the dark code background.
+@media (prefers-color-scheme: dark) {
+  .highlight {
+    color: var(--gray-200);
+
+    .c, .c1, .cs, .ch { color: var(--gray-500); }
+    .k, .kc, .kd, .kn, .kp, .kr { color: #74c0fc; }
+    .kt { color: #66d9e8; }
+    .o, .ow { color: var(--gray-400); }
+    .nb, .bp { color: #63e6be; }
+    .no { color: #a9e34b; }
+    .nv, .vc, .vg, .vi { color: #ffc078; }
+    .gh, .gu { color: var(--gray-200); }
+    .gp { color: #91a7ff; }
+    .nt { color: #74c0fc; }
+    .s, .s1, .s2, .sa, .sb, .sc, .sd, .se, .sh, .sx { color: #ffa8a8; }
+    .si, .err { color: #ff8787; background-color: transparent; }
+    .gd { background-color: rgba(250,82,82,.2); border-color: #c92a2a; }
+    .gi { background-color: rgba(64,192,87,.2); border-color: #2b8a3e; }
+    .hll { background-color: rgba(255,255,255,.08); }
+  }
+}

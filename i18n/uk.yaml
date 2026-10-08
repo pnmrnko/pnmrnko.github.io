@@ -1,0 +1,33 @@
+home: Головна
+archive: Архів
+archiveIntro: Усі дописи за місяцями.
+about: Про мене
+feed: Стрічка Atom
+older: Старіші
+newer: Новіші
+readMore: Читати далі
+related: Інші дописи
+toc: Зміст
+noPosts: Тут поки немає дописів.
+languageSwitch: Мова
+mainNav: Основна навігація
+pagination: Сторінки дописів
+dateFormat: 2 January 2006
+posts:
+  one: "{{ .Count }} допис"
+  few: "{{ .Count }} дописи"
+  many: "{{ .Count }} дописів"
+  other: "{{ .Count }} допису"
+month1: Січень
+month2: Лютий
+month3: Березень
+month4: Квітень
+month5: Травень
+month6: Червень
+month7: Липень
+month8: Серпень
+month9: Вересень
+month10: Жовтень
+month11: Листопад
+month12: Грудень
+footerTheme: тема Poole

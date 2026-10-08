@@ -1,0 +1,11 @@
+{{- /*
+  Link to this page in every other language. When the page has no
+  translation, fall back to that language's home page.
+*/ -}}
+{{- $page := . }}
+{{- range site.Home.Translations }}
+  {{- $lang := .Language.Lang }}
+  {{- $target := . }}
+  {{- range where $page.Translations "Language.Lang" $lang }}{{ $target = . }}{{ end }}
+<a href="{{ $target.RelPermalink }}" lang="{{ $lang }}" hreflang="{{ $lang }}"{{ if ne $target . }} rel="alternate"{{ end }}>{{ .Language.Label }}</a>
+{{- end }}

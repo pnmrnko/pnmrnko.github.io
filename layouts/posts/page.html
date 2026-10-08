@@ -1,0 +1,27 @@
+{{ define "main" }}
+<article class="post">
+  <h1 class="post-title">{{ .Title }}</h1>
+  {{ partial "post-date.html" . }}
+  {{- if and .Params.toc .Fragments.Headings }}
+  <div class="toc" data-title="{{ i18n "toc" }}">{{ .TableOfContents }}</div>
+  {{- end }}
+  {{ .Content }}
+</article>
+
+{{- $others := where (where site.RegularPages "Section" "posts") "Permalink" "ne" .Permalink }}
+{{- with first 3 $others }}
+<aside class="related">
+  <h3>{{ i18n "related" }}</h3>
+  <ul class="related-posts">
+    {{- range . }}
+    <li>
+      <a href="{{ .RelPermalink }}">
+        {{ .Title }}
+        <small><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format (i18n "dateFormat") }}</time></small>
+      </a>
+    </li>
+    {{- end }}
+  </ul>
+</aside>
+{{- end }}
+{{ end }}

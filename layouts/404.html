@@ -1,0 +1,11 @@
+{{- /*
+  GitHub Pages serves only the root 404.html for every missing URL, so this
+  page speaks both languages regardless of which site renders it.
+*/ -}}
+{{ define "main" }}
+<div class="page">
+  <h1 class="page-title">404</h1>
+  <p class="lead" lang="uk">Такої сторінки немає: адреса застаріла або в ній помилка. <a href="/" hreflang="uk">Повернутися на головну</a>.</p>
+  <p class="lead" lang="en">This page doesn’t exist: the address is out of date or mistyped. <a href="/en/" hreflang="en">Go to the home page</a>.</p>
+</div>
+{{ end }}

@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{- $pager := .Paginate (where site.RegularPages "Section" "posts") }}
+<div class="posts">
+  {{- range $pager.Pages }}
+  <article class="post">
+    <h1 class="post-title">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h1>
+    {{ partial "post-date.html" . }}
+    {{- /* Show the excerpt only when the author marked one with <!--more--> */}}
+    {{- if strings.Contains .RawContent "<!--more-->" }}
+    {{ .Summary }}
+    <p><a class="post-more" href="{{ .RelPermalink }}">{{ i18n "readMore" }} →</a></p>
+    {{- else }}
+    {{ .Content }}
+    {{- end }}
+  </article>
+  {{- else }}
+  <p class="posts-empty">{{ i18n "noPosts" }}</p>
+  {{- end }}
+</div>
+
+{{- if gt $pager.TotalPages 1 }}
+<nav class="pagination" aria-label="{{ i18n "pagination" }}">
+  {{- with $pager.Next }}
+  <a class="pagination-item older" href="{{ .URL }}" rel="next">{{ i18n "older" }}</a>
+  {{- else }}
+  <span class="pagination-item older">{{ i18n "older" }}</span>
+  {{- end }}
+  {{- with $pager.Prev }}
+  <a class="pagination-item newer" href="{{ .URL }}" rel="prev">{{ i18n "newer" }}</a>
+  {{- else }}
+  <span class="pagination-item newer">{{ i18n "newer" }}</span>
+  {{- end }}
+</nav>
+{{- end }}
+{{ end }}

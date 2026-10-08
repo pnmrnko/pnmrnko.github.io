@@ -1,0 +1,7 @@
+<footer class="footer">
+  <small>
+    &copy; <time datetime="{{ now.Format "2006" }}">{{ now.Format "2006" }}</time> {{ site.Params.author }}
+    {{- with site.Home.OutputFormats.Get "atom" }} &middot; <a href="{{ .RelPermalink }}" type="application/atom+xml">{{ i18n "feed" }}</a>{{ end }}
+    &middot; <a href="https://github.com/poole/poole">{{ i18n "footerTheme" }}</a>
+  </small>
+</footer>

@@ -1,0 +1,69 @@
+baseURL = "https://pnmrnko.github.io/"
+defaultContentLanguage = "uk"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[pagination]
+  pagerSize = 5
+
+[permalinks.page]
+  posts = "/:year/:month/:slug/"
+
+[outputFormats.atom]
+  mediaType = "application/atom+xml"
+  baseName = "atom"
+  isPlainText = false
+  rel = "alternate"
+
+[mediaTypes."application/atom+xml"]
+  suffixes = ["xml"]
+
+[outputs]
+  home = ["html", "atom"]
+  section = ["html"]
+  page = ["html"]
+
+[languages.uk]
+  locale = "uk-UA"
+  label = "Українська"
+  weight = 1
+  title = "pnmrnko"
+  [languages.uk.params]
+    tagline = "Нотатки"
+    description = "Особистий блог."
+    ogLocale = "uk_UA"
+
+[languages.en]
+  locale = "en-US"
+  label = "English"
+  weight = 2
+  title = "pnmrnko"
+  [languages.en.params]
+    tagline = "Notes"
+    description = "Personal blog."
+    ogLocale = "en_US"
+
+[params]
+  author = "pnmrnko"
+  repo = "https://github.com/pnmrnko/pnmrnko.github.io"
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[markup.goldmark.parser.attribute]
+  block = true
+
+[markup.highlight]
+  noClasses = false
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 3
+
+[sitemap]
+  changeFreq = ""
+  priority = -1
+
+[markup.goldmark.extensions.extras.mark]
+  enable = true

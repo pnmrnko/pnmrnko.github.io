@@ -1,0 +1,18 @@
+{{ define "main" }}
+<article class="page">
+  <h1 class="page-title">{{ .Title }}</h1>
+  {{ .Content }}
+  {{- $posts := where site.RegularPages "Section" "posts" }}
+  {{- range $posts.GroupByDate "2006-01" }}
+    {{- $month := time.AsTime (printf "%s-01" .Key) }}
+  <h2>{{ i18n (printf "month%d" (int $month.Month)) }} {{ $month.Year }}</h2>
+  <ul>
+    {{- range .Pages }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{- end }}
+  </ul>
+  {{- else }}
+  <p class="posts-empty">{{ i18n "noPosts" }}</p>
+  {{- end }}
+</article>
+{{ end }}

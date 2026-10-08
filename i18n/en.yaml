@@ -1,0 +1,31 @@
+home: Home
+archive: Archive
+archiveIntro: All posts by month.
+about: About
+feed: Atom feed
+older: Older
+newer: Newer
+readMore: Read more
+related: More posts
+toc: Contents
+noPosts: No posts here yet.
+languageSwitch: Language
+mainNav: Main navigation
+pagination: Post pages
+dateFormat: January 2, 2006
+posts:
+  one: "{{ .Count }} post"
+  other: "{{ .Count }} posts"
+month1: January
+month2: February
+month3: March
+month4: April
+month5: May
+month6: June
+month7: July
+month8: August
+month9: September
+month10: October
+month11: November
+month12: December
+footerTheme: Poole theme

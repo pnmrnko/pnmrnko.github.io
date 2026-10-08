@@ -1,0 +1,28 @@
+// Table of Contents
+//
+// Hugo renders `<nav id="TableOfContents">`; the label comes from i18n via
+// `data-title` on the wrapper.
+
+.toc {
+  padding: var(--spacer-2) var(--spacer-3);
+  margin-bottom: var(--spacer-2);
+  border: solid var(--border-color);
+  border-width: 1px 0;
+
+  &::before {
+    display: block;
+    margin-left: calc(var(--spacer-3) * -1);
+    content: attr(data-title);
+    font-size: 85%;
+    font-weight: 500;
+  }
+
+  ul {
+    padding-left: var(--spacer);
+    margin-bottom: 0;
+  }
+
+  > nav > ul {
+    padding-left: 0;
+  }
+}
