@@ -372,15 +372,15 @@ mtd:last-child {
   padding-inline-end: 0;
 }
 
-// Chrome also ignores columnalign, which KaTeX sets on cases ("left left")
-// and on aligned/align ("right left right left …").
-mtable[columnalign="left left"] > mtr > mtd {
-  text-align: left;
-}
-
+// Chrome also ignores columnalign, and text-align doesn't move the
+// right-hand column of aligned/align ("right left right left …") either.
 mtable[columnalign^="right left"] > mtr > mtd {
+  // Two flex cells side by side would share one anonymous table cell, so
+  // only the right-aligned ones are flex; the left-aligned ones take
+  // text-align, which works for them.
   &:nth-child(odd) {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
   }
 
   &:nth-child(even) {
@@ -388,7 +388,71 @@ mtable[columnalign^="right left"] > mtr > mtd {
   }
 }
 
+// cases ("left left") set their cells in text style, where text-align works
+mtable[columnalign="left left"] > mtr > mtd {
+  text-align: left;
+}
+
 // …and columnspacing: aligned/align use "0em" so the halves meet at the =.
 mtable[columnspacing="0em"] > mtr > mtd {
   padding-inline: 0;
+}
+
+// \boxed, \fbox, \cancel, \bcancel, \xcancel and \sout: the render hook
+// turns <menclose notation="…"> into <mrow class="menclose …">.
+$strike: transparent calc(50% - .04em), currentColor calc(50% - .04em),
+  currentColor calc(50% + .04em), transparent calc(50% + .04em);
+
+.menclose {
+  &.box {
+    padding: .15em .3em;
+    border: .06em solid;
+  }
+
+  &.updiagonalstrike {
+    background: linear-gradient(to top left, $strike);
+  }
+
+  &.downdiagonalstrike {
+    background: linear-gradient(to top right, $strike);
+  }
+
+  &.updiagonalstrike.downdiagonalstrike {
+    background: linear-gradient(to top left, $strike), linear-gradient(to top right, $strike);
+  }
+
+  &.horizontalstrike {
+    background: linear-gradient(to bottom, $strike);
+  }
+}
+
+// array's | and \hline: the render hook turns columnlines/rowlines into
+// classes, cl2-solid for a rule after the second column, rl1-dashed after the
+// first row
+@for $i from 1 through 12 {
+  @each $style in solid, dashed {
+    mtable.cl#{$i}-#{$style} > mtr > mtd:nth-child(#{$i}) {
+      border-inline-end: .06em $style;
+    }
+
+    mtable.rl#{$i}-#{$style} > mtr:nth-child(#{$i}) > mtd {
+      border-block-end: .06em $style;
+    }
+  }
+}
+
+// \colorbox and \xrightarrow's labels (padded by the render hook)
+.colorbox {
+  padding: .05em .2em;
+}
+
+.xarrow-label {
+  // KaTeX asks for arrows at least 3em long (minsize), which Chrome ignores
+  min-width: 2.4em;
+  padding-inline: .3em;
+}
+
+// \vec: a small arrow over the letter
+.vec {
+  font-size: .75em;
 }

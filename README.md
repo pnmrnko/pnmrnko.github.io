@@ -95,7 +95,19 @@ LaTeX між `$…$` або `\(…\)` — у рядку, між `$$…$$` або
 блоком. Hugo перетворює його на MathML ще під час збірки, тож на сторінках
 немає JavaScript; браузер малює формули шрифтом New CM Sans Math. Помилка
 в формулі зупиняє збірку й називає файл. Приклади — у чернетці
-`content/typography.uk.md` (`hugo server -D -M`, сторінка `/typography/`).
+`content/typography.uk.md` (`hugo server -D -M`, сторінка `/typography/`)
+і в дописі «Космос у формулах» (`content/posts/2026-10-kosmos-u-formulakh/`),
+де зібрано майже все, що вміє KaTeX: `aligned`, `gathered`, `cases`, матриці,
+`array` з лініями, `\tag`, `\boxed`, `\cancel`, `\xrightarrow`, діаграми
+`CD`, хімія `\ce{…}`, кольори.
+
+Не працюють `multline`, `\label`/`\eqref` (номер посилання пишіть руками),
+`\sideset`, `\href`, `\includegraphics`; кирилиця — лише в `\text{…}`.
+`\mathsf` і `\mathtt` браузер малює чужим шрифтом: у New CM Sans Math немає
+цих накреслень. Що Chrome у MathML від KaTeX малює неправильно (рамки,
+закреслення, лінії таблиць, підписи стрілок, вирівнювання `aligned`, проміжки
+біля `\cos`), латає `layouts/_markup/render-passthrough.html` разом зі
+стилями в `assets/scss/_site.scss`.
 
 ## Старий блог
 
