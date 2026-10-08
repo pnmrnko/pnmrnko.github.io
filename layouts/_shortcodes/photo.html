@@ -4,17 +4,18 @@
   Renders nothing while the file is missing, so a post can keep the slot
   for a photo that hasn't been found yet.
   link="true" makes the picture a link to the full-size original, for
-  diagrams whose small print the column is too narrow for.
+  diagrams whose small print the column is too narrow for; link="https://…"
+  links to that address instead (a vector original kept elsewhere).
 */ -}}
 {{- $caption := .Get "caption" }}
-{{- $link := eq (.Get "link") "true" }}
+{{- $link := .Get "link" }}
 {{- with .Page.Resources.Get (.Get "src") }}
   {{- $img := . }}
   {{- if and (eq .MediaType.MainType "image") (gt .Width 1440) }}
     {{- $img = .Resize "1440x webp q82" }}
   {{- end }}
 <figure class="photo">
-  {{- if $link }}<a href="{{ .RelPermalink }}">{{ end }}
+  {{- if $link }}<a href="{{ cond (eq $link "true") .RelPermalink $link }}">{{ end }}
   <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $caption }}" loading="lazy" decoding="async">
   {{- if $link }}</a>{{ end }}
   {{- with $caption }}
