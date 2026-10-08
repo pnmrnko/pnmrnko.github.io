@@ -8,4 +8,4 @@ I’m listening to Amber Mark’s new EP. I recommend it to you too if you love 
 
 And I adore this track now:
 
-{{< embed provider="youtube" id="EWvXfmwuiHU" title="Amber Mark — Love Me Right" link="true" >}}
+{{< embed provider="soundcloud" id="396827769" title="Amber Mark — Love Me Right" >}}

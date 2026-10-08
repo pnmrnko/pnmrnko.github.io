@@ -2,7 +2,8 @@
   Third-party player in a responsive frame:
   {{< embed provider="youtube" id="YH3c1QZzRK4" title="…" caption="…" >}}
   Providers: youtube (no-cookie domain), vimeo (do-not-track), coub,
-  soundcloud (pass the full player URL as src).
+  soundcloud and bandcamp (id is the numeric track id; for soundcloud a full
+  player URL in src works too).
   link="true" shows a link card instead of a player, for videos whose owner
   has disabled playback on other sites.
 */ -}}
@@ -17,6 +18,12 @@
 {{- else if eq $provider "coub" }}
   {{- $src = printf "https://coub.com/embed/%s?muted=false&autostart=false&originalSize=false&startWithHD=true" $id }}
 {{- else if eq $provider "soundcloud" }}
+  {{- with $id }}
+    {{- $src = printf "https://w.soundcloud.com/player/?url=https%%3A//api.soundcloud.com/tracks/%s&color=%%23228be6&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false" . }}
+  {{- end }}
+  {{- $ratio = false }}
+{{- else if eq $provider "bandcamp" }}
+  {{- $src = printf "https://bandcamp.com/EmbeddedPlayer/track=%s/size=large/bgcol=ffffff/linkcol=228be6/tracklist=false/artwork=small/transparent=true/" $id }}
   {{- $ratio = false }}
 {{- else }}
   {{- errorf "embed: unknown provider %q in %s" $provider .Position }}
