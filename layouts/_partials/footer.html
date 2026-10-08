@@ -1,4 +1,14 @@
 <footer class="footer">
+  <nav class="footer-nav" aria-label="{{ i18n "footerNav" }}">
+    {{- $current := . }}
+    {{- with site.GetPage "archive" }}
+    <a href="{{ .RelPermalink }}"{{ if eq . $current }} aria-current="page"{{ end }}>{{ i18n "archiveLink" }}</a>
+    {{- end }}
+    {{- with site.GetPage "about" }}
+    <a href="{{ .RelPermalink }}"{{ if eq . $current }} aria-current="page"{{ end }}>{{ .LinkTitle }}</a>
+    {{- end }}
+    {{ partial "language-switch.html" . }}
+  </nav>
   <small>
     &copy; <time datetime="{{ now.Format "2006" }}">{{ now.Format "2006" }}</time> {{ site.Params.author }}
     {{- with site.Home.OutputFormats.Get "atom" }} &middot; <a href="{{ .RelPermalink }}" type="application/atom+xml">{{ i18n "feed" }}</a>{{ end }}

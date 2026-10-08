@@ -5,13 +5,4 @@
     </a>
     {{ with site.Params.tagline }}<small>{{ . }}</small>{{ end }}
   </div>
-  <nav class="masthead-nav" aria-label="{{ i18n "mainNav" }}">
-    {{- $current := . }}
-    {{- range slice "archive" "about" }}
-      {{- with site.GetPage . }}
-    <a href="{{ .RelPermalink }}"{{ if eq . $current }} aria-current="page"{{ end }}>{{ .LinkTitle }}</a>
-      {{- end }}
-    {{- end }}
-    {{ partial "language-switch.html" . }}
-  </nav>
 </header>

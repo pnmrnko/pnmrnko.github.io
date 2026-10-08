@@ -1,11 +1,16 @@
 {{- /*
-  Link to this page in every other language. When the page has no
-  translation, fall back to that language's home page.
+  Link to this page in every other language, labelled in the language of the
+  current page ("Англомовна версія" here, "Ukrainian version" there; the
+  i18n key is versionOf_<target>). When the page has no translation, fall
+  back to that language's home page (also from the 404 page, whose
+  "translation" is just another 404).
 */ -}}
 {{- $page := . }}
 {{- range site.Home.Translations }}
   {{- $lang := .Language.Lang }}
   {{- $target := . }}
-  {{- range where $page.Translations "Language.Lang" $lang }}{{ $target = . }}{{ end }}
-<a href="{{ $target.RelPermalink }}" lang="{{ $lang }}" hreflang="{{ $lang }}"{{ if ne $target . }} rel="alternate"{{ end }}>{{ .Language.Label }}</a>
+  {{- if ne $page.Kind "404" }}
+    {{- range where $page.Translations "Language.Lang" $lang }}{{ $target = . }}{{ end }}
+  {{- end }}
+<a href="{{ $target.RelPermalink }}" hreflang="{{ $lang }}"{{ if ne $target . }} rel="alternate"{{ end }}>{{ i18n (printf "versionOf_%s" $lang) }}</a>
 {{- end }}

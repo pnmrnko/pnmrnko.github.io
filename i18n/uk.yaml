@@ -8,8 +8,6 @@ newer: Новіші
 related: Інші дописи
 toc: Зміст
 noPosts: Тут поки немає дописів.
-languageSwitch: Мова
-mainNav: Основна навігація
 pagination: Сторінки дописів
 dateFormat: 2 January 2006
 posts:
@@ -31,3 +29,6 @@ month11: Листопад
 month12: Грудень
 footerTheme: тема Poole
 watchOn: "Дивитися на {{ .Provider }}"
+archiveLink: Архів дописів
+footerNav: Навігація сайтом
+versionOf_en: Англомовна версія

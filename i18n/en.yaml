@@ -8,8 +8,6 @@ newer: Newer
 related: More posts
 toc: Contents
 noPosts: No posts here yet.
-languageSwitch: Language
-mainNav: Main navigation
 pagination: Post pages
 dateFormat: January 2, 2006
 posts:
@@ -29,3 +27,6 @@ month11: November
 month12: December
 footerTheme: Poole theme
 watchOn: "Watch on {{ .Provider }}"
+archiveLink: Post archive
+footerNav: Site navigation
+versionOf_uk: Ukrainian version

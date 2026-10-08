@@ -11,28 +11,6 @@
   gap: .5rem var(--spacer-2);
 }
 
-.masthead-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacer);
-  font-size: .875rem;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    opacity: .5;
-
-    &:hover,
-    &:focus {
-      opacity: 1;
-    }
-
-    &[aria-current="page"] {
-      opacity: 1;
-    }
-  }
-}
-
 .posts-empty {
   color: var(--gray-600);
 }
@@ -50,10 +28,34 @@
 }
 
 .footer {
+  display: grid;
+  gap: .5rem;
   color: var(--gray-600);
 
   a {
     color: inherit;
+  }
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem var(--spacer-2);
+
+  a {
+    color: var(--body-color);
+    text-decoration-color: var(--border-color);
+    text-underline-offset: .2em;
+
+    &:hover,
+    &:focus {
+      color: var(--link-color);
+      text-decoration-color: currentColor;
+    }
+
+    &[aria-current="page"] {
+      text-decoration: none;
+    }
   }
 }
 
@@ -70,35 +72,37 @@
   color: inherit;
 }
 
-// Logo geometry, in the SVG's units (viewBox 5860 × 1566): the letters'
-// baseline is 605 from the top, their x-height is 444, and the p starts 424
-// in from the left edge (the sparkline's tail sits in that space).
+// Logo geometry, in the SVG's own units (see assets/logo.svg): viewBox
+// width and height, the letters' baseline and x-height measured from the
+// top / baseline, and where the p starts (the sparkline's tail sits left of
+// it). The p is set 58 units (about 2px) inside the text edge, which looked
+// better than flush. Update these together if the SVG is regenerated.
 .masthead {
   --logo-height: 3.4rem;
-  --logo-xheight: calc(var(--logo-height) * 444 / 1566);
+  --logo-vb-width: 5610;
+  --logo-vb-height: 1601;
+  --logo-vb-baseline: 605;
+  --logo-vb-xheight: 444;
+  --logo-vb-inset: 366;
+  --logo-unit: calc(var(--logo-height) / var(--logo-vb-height));
+  --logo-xheight: calc(var(--logo-unit) * var(--logo-vb-xheight));
 }
 
 // Letters on the text baseline, sparkline hanging below like a descender;
-// the p, not the sparkline's tail, lines up with the text column. It sits
-// 58 units (about 2px) inside the edge: flush at 424 it looked too far left.
+// the p, not the sparkline's tail, lines up with the text column.
 .logo {
   width: auto;
   height: var(--logo-height);
-  aspect-ratio: 5860 / 1566;
-  margin-left: calc(var(--logo-height) * -366 / 1566);
-  vertical-align: calc(var(--logo-height) * -961 / 1566);
+  aspect-ratio: var(--logo-vb-width) / var(--logo-vb-height);
+  margin-left: calc(var(--logo-unit) * var(--logo-vb-inset) * -1);
+  vertical-align: calc(var(--logo-unit) * (var(--logo-vb-baseline) - var(--logo-vb-height)));
 }
 
-// The tagline and the nav are smaller than the logo's letters, so they align
-// to its x-height line instead of its baseline: each is raised by the gap
-// between the logo's x-height and its own (1ex).
+// The tagline is smaller than the logo's letters, so it aligns to the logo's
+// x-height line instead of its baseline: it is raised by the gap between the
+// logo's x-height and its own (1ex).
 .masthead-title small {
   vertical-align: calc(var(--logo-xheight) - 1ex);
-}
-
-.masthead-nav {
-  position: relative;
-  top: calc(1ex - var(--logo-xheight));
 }
 
 .logo-accent {
