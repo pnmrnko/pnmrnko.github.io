@@ -29,3 +29,4 @@ month10: October
 month11: November
 month12: December
 footerTheme: Poole theme
+watchOn: "Watch on {{ .Provider }}"

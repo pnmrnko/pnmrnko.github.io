@@ -91,3 +91,88 @@ a:focus-visible {
     .hll { background-color: rgba(255,255,255,.08); }
   }
 }
+
+// Photos and embedded players
+
+.photo,
+.embed {
+  margin: var(--spacer-2) 0;
+
+  img {
+    margin-bottom: 0;
+    height: auto;
+  }
+
+  figcaption {
+    margin-top: .5rem;
+    font-size: .875rem;
+    color: var(--gray-600);
+  }
+}
+
+.embed-frame {
+  overflow: hidden;
+  background-color: var(--code-bg);
+  border-radius: var(--border-radius);
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 450px;
+    border: 0;
+  }
+}
+
+.embed-frame-video iframe {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+// Link card for videos that can't be embedded
+.embed-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer);
+  padding: var(--spacer);
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    background-color: var(--code-bg);
+
+    .embed-link-title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.embed-link-play {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  padding-left: .15rem;
+  color: #fff;
+  background-color: var(--red);
+  border-radius: 50%;
+}
+
+.embed-link-text {
+  display: flex;
+  flex-direction: column;
+
+  small {
+    color: var(--gray-600);
+  }
+}
+
+.embed-link-title {
+  font-weight: 600;
+  color: var(--heading-color);
+}

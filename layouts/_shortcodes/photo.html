@@ -1,0 +1,19 @@
+{{- /*
+  A photo from the post's bundle with an optional caption:
+  {{< photo src="P1110004.jpg" caption="У дворі біля плуга" >}}
+  Renders nothing while the file is missing, so a post can keep the slot
+  for a photo that hasn't been found yet.
+*/ -}}
+{{- $caption := .Get "caption" }}
+{{- with .Page.Resources.Get (.Get "src") }}
+  {{- $img := . }}
+  {{- if and (eq .MediaType.MainType "image") (gt .Width 1440) }}
+    {{- $img = .Resize "1440x webp q82" }}
+  {{- end }}
+<figure class="photo">
+  <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $caption }}" loading="lazy" decoding="async">
+  {{- with $caption }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+{{- end }}

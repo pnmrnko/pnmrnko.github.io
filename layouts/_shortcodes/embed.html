@@ -1,0 +1,45 @@
+{{- /*
+  Third-party player in a responsive frame:
+  {{< embed provider="youtube" id="YH3c1QZzRK4" title="…" caption="…" >}}
+  Providers: youtube (no-cookie domain), vimeo (do-not-track), coub,
+  soundcloud (pass the full player URL as src).
+  link="true" shows a link card instead of a player, for videos whose owner
+  has disabled playback on other sites.
+*/ -}}
+{{- $provider := .Get "provider" }}
+{{- $id := .Get "id" }}
+{{- $src := .Get "src" }}
+{{- $ratio := true }}
+{{- if eq $provider "youtube" }}
+  {{- $src = printf "https://www.youtube-nocookie.com/embed/%s" $id }}
+{{- else if eq $provider "vimeo" }}
+  {{- $src = printf "https://player.vimeo.com/video/%s?dnt=1" $id }}
+{{- else if eq $provider "coub" }}
+  {{- $src = printf "https://coub.com/embed/%s?muted=false&autostart=false&originalSize=false&startWithHD=true" $id }}
+{{- else if eq $provider "soundcloud" }}
+  {{- $ratio = false }}
+{{- else }}
+  {{- errorf "embed: unknown provider %q in %s" $provider .Position }}
+{{- end }}
+<figure class="embed embed-{{ $provider }}">
+  {{- if eq (.Get "link") "true" }}
+  {{- $watch := printf "https://www.youtube.com/watch?v=%s" $id }}
+  {{- if eq $provider "vimeo" }}{{ $watch = printf "https://vimeo.com/%s" $id }}{{ end }}
+  <a class="embed-link" href="{{ $watch }}">
+    <span class="embed-link-play" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 2.5v11l9.5-5.5z" fill="currentColor"/></svg></span>
+    <span class="embed-link-text">
+      <span class="embed-link-title">{{ .Get "title" }}</span>
+      <small>{{ i18n "watchOn" (dict "Provider" (cond (eq $provider "vimeo") "Vimeo" "YouTube")) }}</small>
+    </span>
+  </a>
+  {{- else }}
+  <div class="embed-frame{{ if $ratio }} embed-frame-video{{ end }}">
+    <iframe src="{{ $src }}" title="{{ .Get "title" }}" loading="lazy"
+      allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+      allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
+  {{- end }}
+  {{- with .Get "caption" }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>

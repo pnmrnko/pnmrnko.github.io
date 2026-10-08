@@ -31,3 +31,4 @@ month10: Жовтень
 month11: Листопад
 month12: Грудень
 footerTheme: тема Poole
+watchOn: "Дивитися на {{ .Provider }}"
