@@ -70,16 +70,34 @@
   color: inherit;
 }
 
-// The SVG's viewBox is 5860 × 1566 with the letters' baseline 605 units from
-// the top; shifting it down by the part below the baseline (961 / 1566) puts
-// the letters on the text baseline, so the tagline and the nav line up with
-// them and the sparkline hangs below like a descender.
-.logo {
+// Logo geometry, in the SVG's units (viewBox 5860 × 1566): the letters'
+// baseline is 605 from the top, their x-height is 444, and the p starts 424
+// in from the left edge (the sparkline's tail sits in that space).
+.masthead {
   --logo-height: 3.4rem;
+  --logo-xheight: calc(var(--logo-height) * 444 / 1566);
+}
+
+// Letters on the text baseline, sparkline hanging below like a descender;
+// the p, not the sparkline's tail, lines up with the text column.
+.logo {
   width: auto;
   height: var(--logo-height);
   aspect-ratio: 5860 / 1566;
+  margin-left: calc(var(--logo-height) * -424 / 1566);
   vertical-align: calc(var(--logo-height) * -961 / 1566);
+}
+
+// The tagline and the nav are smaller than the logo's letters, so they align
+// to its x-height line instead of its baseline: each is raised by the gap
+// between the logo's x-height and its own (1ex).
+.masthead-title small {
+  vertical-align: calc(var(--logo-xheight) - 1ex);
+}
+
+.masthead-nav {
+  position: relative;
+  top: calc(1ex - var(--logo-xheight));
 }
 
 .logo-accent {
