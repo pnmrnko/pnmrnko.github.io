@@ -1,8 +1,10 @@
 <header class="masthead">
-  <h3 class="masthead-title">
-    <a href="{{ site.Home.RelPermalink }}" title="{{ i18n "home" }}">{{ site.Title }}</a>
+  <div class="masthead-title">
+    <a class="masthead-logo" href="{{ site.Home.RelPermalink }}" rel="home" aria-label="{{ site.Title }}">
+      {{- (resources.Get "logo.svg").Content | safeHTML -}}
+    </a>
     {{ with site.Params.tagline }}<small>{{ . }}</small>{{ end }}
-  </h3>
+  </div>
   <nav class="masthead-nav" aria-label="{{ i18n "mainNav" }}">
     {{- $current := . }}
     {{- range slice "archive" "about" }}

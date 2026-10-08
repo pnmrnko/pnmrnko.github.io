@@ -57,6 +57,35 @@
   }
 }
 
+// Site title as a logo. It used to be Poole's <h3>; now it is a plain block
+// so the page's own <h1> stays the first heading.
+.masthead-title {
+  margin: 1.5rem 0 0;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: var(--heading-color);
+}
+
+.masthead-logo {
+  color: inherit;
+}
+
+// The SVG's viewBox is 5860 × 1566 with the letters' baseline 605 units from
+// the top; shifting it down by the part below the baseline (961 / 1566) puts
+// the letters on the text baseline, so the tagline and the nav line up with
+// them and the sparkline hangs below like a descender.
+.logo {
+  --logo-height: 3.4rem;
+  width: auto;
+  height: var(--logo-height);
+  aspect-ratio: 5860 / 1566;
+  vertical-align: calc(var(--logo-height) * -961 / 1566);
+}
+
+.logo-accent {
+  fill: var(--link-color);
+}
+
 // Visible focus for keyboard users
 a:focus-visible {
   outline: 2px solid var(--link-color);
