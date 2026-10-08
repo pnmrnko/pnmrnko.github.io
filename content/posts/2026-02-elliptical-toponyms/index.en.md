@@ -15,10 +15,10 @@ Elliptical toponyms are geographical proper names that have been historically tr
 
 | Historical Full Form | Truncated Form | Explanation |
 | --- | --- | --- |
-| Sed-ezeris | Sedzeris | The hydronym "Lake Seda" lost the generic term *ezeris* (lake). |  
-| Spanggroben | Spanget | A neighborhood near a stream; the second element *-groben* (ditch/trench) was dropped. |  
-| Stampedam | Stampen | A farmstead near a pond; the second element *-dam* (pond) was dropped, leaving only the specific element. |  
-| Sankt Peters Kirche | Sankt Peter | St. Peter's Church; the second element *Kirche* (church) was dropped. |  
+| Sed-ezeris | Sedzeris | The hydronym "Lake Seda" lost the generic term *ezeris* (lake). |
+| Spanggroben | Spanget | A neighborhood near a stream; the second element *-groben* (ditch/trench) was dropped. |
+| Stampedam | Stampen | A farmstead near a pond; the second element *-dam* (pond) was dropped, leaving only the specific element. |
+| Sankt Peters Kirche | Sankt Peter | St. Peter's Church; the second element *Kirche* (church) was dropped. |
 
 In 1980, the Soviet linguist and translator Adolf Turkin wrote an article titled "[Elliptical Names in Komi Toponymy](https://www.researchgate.net/publication/378539756_ELLIPTIROVANNYE_NAZVANIA_V_KOMI_TOPONIMII)" about this phenomenon, providing many examples of name evolution where the suffix indicating the object type was eventually discarded. You can see a few of these in the table below:
 
@@ -98,3 +98,5 @@ However, for names of streets, lanes, and similar objects, **generic words shoul
 ## Why does this matter to us?
 
 At first glance, debates over "tracts" (*urochyshche*) or "corners" (*kutok*) might seem like excessive academicism. However, for OpenStreetMap, the devil is in these details. Ukraine’s rich microtoponymy—all these local corners, ponds, fields, and islets—is living history. By preserving full names, we protect our regional and linguistic identity. OSM remains perhaps the only living project where we can record the names of the smallest features exactly as they have been used for generations.
+
+*Originally posted in the [OpenStreetMap diary](https://www.openstreetmap.org/user/darkonus/diary/408211).*

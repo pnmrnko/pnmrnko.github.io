@@ -263,6 +263,13 @@ a:focus-visible {
 
 // Photos and embedded players
 
+// A photo that links to its full-size original (photo link="true") has no
+// link underline
+.photo a {
+  display: block;
+  border-bottom: 0;
+}
+
 .photo,
 .embed {
   margin: var(--spacer-2) 0;
