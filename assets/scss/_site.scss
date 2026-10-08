@@ -11,10 +11,11 @@ html {
   margin-left: 0;
 }
 
-// The top of the logo's ink (the k's ascender) sits as far from the top of
-// the window as the text column sits from its left edge.
+// The logo's x-height line (the top of its lowercase letters) sits as far
+// from the top of the window as the text column sits from its left edge;
+// the k's ascender and the raised vowels reach up into that margin.
 .masthead {
-  padding-top: calc(var(--spacer-2) - var(--logo-unit) * var(--logo-vb-ink-top));
+  padding-top: calc(var(--spacer-2) - var(--logo-unit) * (var(--logo-vb-baseline) - var(--logo-vb-xheight)));
 }
 
 // Site additions
@@ -101,7 +102,6 @@ html {
   --logo-vb-baseline: 724;
   --logo-vb-xheight: 444;
   --logo-vb-inset: 366;
-  --logo-vb-ink-top: 30;
   --logo-unit: calc(var(--logo-size) / 1000);
   --logo-height: calc(var(--logo-unit) * var(--logo-vb-height));
   --logo-xheight: calc(var(--logo-unit) * var(--logo-vb-xheight));
