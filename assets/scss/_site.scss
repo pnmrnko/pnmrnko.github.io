@@ -263,6 +263,8 @@ a:focus-visible {
 // Single-track audio players at their own fixed heights
 .embed-soundcloud iframe { height: 166px; }
 .embed-bandcamp iframe { height: 120px; }
+// Bandcamp's player stops growing at 700px; a wider frame shows past its edge
+.embed-bandcamp .embed-frame { max-width: 700px; }
 
 // Link card for videos that can't be embedded
 .embed-link {
