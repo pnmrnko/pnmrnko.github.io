@@ -1,3 +1,10 @@
+// Everything is sized in rem, so this one percentage scales text, headings,
+// code, the logo and spacing together; as a percentage it still follows the
+// reader's browser font-size setting.
+html {
+  font-size: 106.25%;
+}
+
 // Site additions
 //
 // Things Poole doesn't ship: the masthead navigation with the language switch,
@@ -64,7 +71,7 @@
 .masthead-title {
   margin: 1.5rem 0 0;
   font-size: 1.25rem;
-  line-height: 1.25;
+  line-height: 1.2;
   color: var(--heading-color);
 }
 
