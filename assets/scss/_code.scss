@@ -12,11 +12,20 @@ code {
   font-size: 85%;
 }
 
+// A block's code is sized on the pre, not the code, so that every line,
+// highlighted (display: block) or not, has the same height
 pre {
   display: block;
   margin-top: 0;
   margin-bottom: var(--spacer-3);
   overflow: auto;
+  font-size: 85%;
+  line-height: 1.5;
+  tab-size: 4;
+
+  code {
+    font-size: 100%;
+  }
 }
 
 .highlight {
@@ -33,6 +42,43 @@ pre {
   .highlight {
     padding: 0;
   }
+}
+
+// Chroma's line numbers (linenos) and highlighted lines (hl_lines); the
+// same markup comes from layouts/_markup/render-codeblock.html for the
+// languages described in data/syntax/
+// A table grows to its longest line, so the block scrolls around it
+.highlight > .chroma {
+  overflow-x: auto;
+}
+
+.lntable {
+  width: auto;
+  margin: 0;
+  border-spacing: 0;
+
+  td.lntd {
+    padding: 0;
+    vertical-align: top;
+    border: 0;
+
+    &:last-child {
+      width: 100%;
+    }
+  }
+}
+
+.lnt,
+.ln {
+  margin-right: .75em;
+  color: var(--gray-500);
+  white-space: pre;
+  user-select: none;
+}
+
+.chroma .hl {
+  display: block;
+  background-color: var(--yellow-100);
 }
 
 .rouge-table {

@@ -1,0 +1,49 @@
+{{- /*
+  Splits .text into tokens by .rules (a list of {re, class}) and returns it
+  as HTML: one alternation of all the rules, tried left to right, the first
+  rule that matches wins; anything no rule matches stays plain. Rules must
+  not use capturing groups, (?:…) only, and must not match an empty string.
+
+  A token that spans lines is closed and reopened at each newline, so the
+  caller can split the result into lines.
+*/ -}}
+{{- $alts := slice }}
+{{- range .rules }}
+  {{- $alts = $alts | append (printf "(%s)" .re) }}
+{{- end }}
+{{- $re := printf `%s|([\s\S])` (delimit $alts "|") }}
+{{- $tokens := slice }}
+{{- $class := "" }}
+{{- $buf := "" }}
+{{- range findRESubmatch $re .text -1 }}
+  {{- $m := . }}
+  {{- $c := "" }}
+  {{- $found := false }}
+  {{- range $i, $r := $.rules }}
+    {{- if and (not $found) (ne (index $m (add $i 1)) "") }}
+      {{- $c = $r.class }}
+      {{- $found = true }}
+    {{- end }}
+  {{- end }}
+  {{- if or (ne $c $class) (and $found $c) }}
+    {{- $tokens = $tokens | append (dict "class" $class "text" $buf) }}
+    {{- $class = $c }}
+    {{- $buf = "" }}
+  {{- end }}
+  {{- $buf = printf "%s%s" $buf (index $m 0) }}
+{{- end }}
+{{- $tokens = $tokens | append (dict "class" $class "text" $buf) }}
+{{- $html := "" }}
+{{- range $tokens }}
+  {{- $class := .class }}
+  {{- $parts := slice }}
+  {{- range split .text "\n" }}
+    {{- if and $class . }}
+      {{- $parts = $parts | append (printf `<span class="%s">%s</span>` $class (htmlEscape .)) }}
+    {{- else }}
+      {{- $parts = $parts | append (htmlEscape .) }}
+    {{- end }}
+  {{- end }}
+  {{- $html = printf "%s%s" $html (delimit $parts "\n") }}
+{{- end }}
+{{- return $html }}

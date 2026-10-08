@@ -220,7 +220,7 @@ a:focus-visible {
     .si, .err { color: #ff8787; background-color: transparent; }
     .gd { background-color: rgba(250,82,82,.2); border-color: #c92a2a; }
     .gi { background-color: rgba(64,192,87,.2); border-color: #2b8a3e; }
-    .hll { background-color: rgba(255,255,255,.08); }
+    .hll, .chroma .hl { background-color: rgba(255,255,255,.08); }
   }
 }
 

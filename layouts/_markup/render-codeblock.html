@@ -1,0 +1,114 @@
+{{- /*
+  Code blocks. Languages Chroma knows (about 250) are highlighted by Hugo as
+  usual. Languages Chroma doesn't know can be described in data/syntax/
+  <name>.yaml, by their name or one of their aliases, and are highlighted
+  here with the same Chroma classes, so the same stylesheet colours them:
+
+    name: Overpass QL          shown nowhere, for people reading the file
+    aliases: [overpass, oql]   other names for the code fence
+    lines:                     optional: whole-line rules, see level0l.yaml
+    tokens:                    token lists {re, class}; "main" is used for
+      main: […]                a block without line rules, and for lines
+                               none of them match
+
+  linenos, linenostart and hl_lines work for them as for Chroma's.
+*/ -}}
+{{- $lang := lower .Type }}
+{{- $def := false }}
+{{- range $name, $d := hugo.Data.syntax }}
+  {{- if or (eq $name $lang) (in ($d.aliases | default slice) $lang) }}
+    {{- $def = $d }}
+  {{- end }}
+{{- end }}
+
+{{- if not $def }}
+  {{- (transform.HighlightCodeBlock .).Wrapped }}
+{{- else }}
+  {{- $text := strings.TrimRight "\n" .Inner }}
+  {{- $tokens := $def.tokens | default dict }}
+
+  {{- /* Highlight, as HTML that splits into lines at "\n" */}}
+  {{- $html := "" }}
+  {{- if $def.lines }}
+    {{- $out := slice }}
+    {{- range $line := split $text "\n" }}
+      {{- $done := false }}
+      {{- range $rule := $def.lines }}
+        {{- if not $done }}
+          {{- with findRESubmatch $rule.re $line 1 }}
+            {{- $groups := index . 0 }}
+            {{- $h := "" }}
+            {{- $seen := "" }}
+            {{- range $i, $class := $rule.groups }}
+              {{- $part := index $groups (add $i 1) }}
+              {{- $seen = printf "%s%s" $seen $part }}
+              {{- if not $part }}
+              {{- else if index $tokens $class }}
+                {{- $h = printf "%s%s" $h (partial "syntax/lex.html" (dict "text" $part "rules" (index $tokens $class))) }}
+              {{- else if $class }}
+                {{- $h = printf `%s<span class="%s">%s</span>` $h $class (htmlEscape $part) }}
+              {{- else }}
+                {{- $h = printf "%s%s" $h (htmlEscape $part) }}
+              {{- end }}
+            {{- end }}
+            {{- if ne $seen $line }}
+              {{- errorf "syntax %s: the groups of %q don't cover the line %q" $lang $rule.re $line }}
+            {{- end }}
+            {{- $out = $out | append $h }}
+            {{- $done = true }}
+          {{- end }}
+        {{- end }}
+      {{- end }}
+      {{- if not $done }}
+        {{- with $tokens.main }}
+          {{- $out = $out | append (partial "syntax/lex.html" (dict "text" $line "rules" .)) }}
+        {{- else }}
+          {{- $out = $out | append (htmlEscape $line) }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+    {{- $html = delimit $out "\n" }}
+  {{- else }}
+    {{- $html = partial "syntax/lex.html" (dict "text" $text "rules" $tokens.main) }}
+  {{- end }}
+
+  {{- /* hl_lines: "2 4-5" or [2, "4-5"], counted from the block's first line */}}
+  {{- $hl := slice }}
+  {{- with .Options.hl_lines }}
+    {{- $spec := . }}
+    {{- if reflect.IsSlice . }}{{ $spec = delimit . " " }}{{ end }}
+    {{- range split (replace (string $spec) "," " ") " " }}
+      {{- with . }}
+        {{- $ab := split . "-" }}
+        {{- range seq (int (index $ab 0)) (int (index $ab (sub (len $ab) 1))) }}
+          {{- $hl = $hl | append . }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  {{- $start := int (.Options.linenostart | default 1) }}
+  {{- $linenos := .Options.linenos | default false }}
+
+  {{- $lines := slice }}
+  {{- $numbers := slice }}
+  {{- range $i, $h := split $html "\n" }}
+    {{- $n := add $i 1 }}
+    {{- $hlClass := cond (in $hl $n) " hl" "" }}
+    {{- $nl := cond (lt $n (len (split $html "\n"))) "\n" "" }}
+    {{- $lines = $lines | append (printf `<span class="line%s"><span class="cl">%s%s</span></span>` $hlClass $h $nl) }}
+    {{- $num := printf `<span class="lnt">%d%s</span>` (add $start $i) $nl }}
+    {{- if $hlClass }}{{ $num = printf `<span class="hl">%s</span>` $num }}{{ end }}
+    {{- $numbers = $numbers | append $num }}
+  {{- end }}
+  {{- $code := printf `<pre tabindex="0" class="chroma"><code class="language-%s" data-lang="%s">%s</code></pre>` $lang $lang (delimit $lines "") }}
+<div class="highlight"
+  {{- range $k, $v := .Attributes }} {{ $k }}="{{ $v }}"{{ end }}>
+  {{- if $linenos }}<div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code>{{ delimit $numbers "" | safeHTML }}</code></pre></td>
+<td class="lntd">
+{{ $code | safeHTML }}</td></tr></table>
+</div>
+  {{- else }}{{ $code | safeHTML }}{{ end -}}
+</div>
+{{- end }}

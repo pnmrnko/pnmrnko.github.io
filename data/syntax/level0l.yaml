@@ -1,0 +1,40 @@
+# Level0L, the text format of the Level0 OpenStreetMap editor. Ported from
+# syntaxes/level0l.tmLanguage.json in github.com/pnmrnko/level0-vscode.
+#
+# How these files work: see layouts/_markup/render-codeblock.html. A line
+# rule must match a whole line and its groups must cover it; each group gets
+# a Chroma class (styled in assets/scss/_syntax.scss), "" for none, or the
+# name of a token list below to split it further.
+name: Level0L
+aliases: [l0l, level0]
+
+lines:
+  # A comment is a line starting with "#" in the first column
+  - re: '^(#.*)$'
+    groups: [c1]
+  # [!][-]type [id[.version]] [: lat, lon] [# comment]
+  - re: '^(!?)(-?)(node|way|relation|changeset)((?:\s+-?[0-9]+)?)((?:\.[0-9]+)?)((?:\s*:\s*-?[0-9]{1,2}(?:\.[0-9]+)?\s*,\s*-?[0-9]{1,3}(?:\.[0-9]+)?)?)(\s*)((?:#.*)?)$'
+    groups: [err, o, kd, id, version, coords, "", c1]
+  # nd|wy|rel id [role] [# comment]
+  - re: '^(\s*)(nd|wy|rel)(\s+)(-?[0-9]+)((?:\s+[^#\s].*?)?)((?:\s+#.*)?)(\s*)$'
+    groups: ["", kt, "", id, s, c1, ""]
+  # key = value; "\=" inside a key is an escaped equals sign
+  - re: '^(\s*)((?:[^=\\]|\\.)*?)(\s*=\s*)(.*?)(\s*)$'
+    groups: ["", key, o, s, ""]
+  # Anything else the parser rejects
+  - re: '^(\s*)(\S.*)$'
+    groups: ["", err]
+
+tokens:
+  id:
+    - {re: '-[0-9]+', class: "no"}   # a new object
+    - {re: '[0-9]+', class: m}
+  version:
+    - {re: '\.', class: p}
+    - {re: '[0-9]+', class: mi}
+  coords:
+    - {re: '[:,]', class: p}
+    - {re: '-?[0-9]+(?:\.[0-9]+)?', class: mf}
+  key:
+    - {re: '\\=', class: se}
+    - {re: '(?:[^\\]|\\[^=])+', class: nt}

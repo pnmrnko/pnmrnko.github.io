@@ -1,0 +1,28 @@
+# Overpass QL, the query language of the Overpass API
+# (wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL), with overpass
+# turbo's {{…}} shortcuts. Tokens only: the first rule that matches wins.
+name: Overpass QL
+aliases: [overpass, oql]
+
+tokens:
+  main:
+    - {re: '//[^\n]*', class: c1}
+    - {re: '/\*[\s\S]*?\*/', class: cm}
+    - {re: '"(?:[^"\\\n]|\\.)*"', class: s2}
+    - {re: "'(?:[^'\\\\\\n]|\\\\.)*'", class: s1}
+    - {re: '\{\{[^}]*\}\}', class: si}
+    # Query types
+    - {re: '\b(?:node|way|rel|relation|nwr|nw|nr|wr|area|derived)\b', class: kt}
+    # Statements and blocks
+    - {re: '\b(?:out|foreach|for|if|complete|retro|compare|make|convert|timeline|local|is_in|map_to_area|pivot)\b', class: k}
+    # out's verbosity and geometry
+    - {re: '\b(?:ids|skel|body|tags|meta|noids|geom|bb|center|asc|qt|count)\b', class: kp}
+    # Global settings
+    - {re: '\b(?:timeout|maxsize|bbox|date|diff|adiff|csv|json|xml|popup)\b', class: nb}
+    # Filters and evaluators
+    - {re: '\b(?:around|poly|user|uid|newer|changed|id|type|t|u|is_tag|keys|length|number|is_number|suffix|is_date|set|min|max|sum|lrs_in|lrs_isect|lrs_union|lrs_min|lrs_max|per_member|per_vertex|pos|mtype|ref|role|version|timestamp|changeset|trace|hull|gcat|is_closed|angle|geom)\b', class: nf}
+    # Named sets: .result, ._, ->.cafes
+    - {re: '\.[A-Za-z_][A-Za-z0-9_]*', class: nv}
+    - {re: '-?[0-9]+(?:\.[0-9]+)?', class: m}
+    - {re: '->|!~|!=|<<|>>|[~=!<>+*/?]|-|&&|\|\|', class: o}
+    - {re: '[\[\](){};:,]', class: p}

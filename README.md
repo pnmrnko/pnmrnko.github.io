@@ -109,6 +109,22 @@ LaTeX між `$…$` або `\(…\)` — у рядку, між `$$…$$` або
 біля `\cos`), латає `layouts/_markup/render-passthrough.html` разом зі
 стилями в `assets/scss/_site.scss`.
 
+## Код
+
+Після трьох зворотних лапок — назва мови; Hugo розфарбовує код під час
+збірки (Chroma, ~250 мов, кольори — `assets/scss/_syntax.scss`). Атрибути
+блоку: `{linenos=table hl_lines="2 4-5" linenostart=10}`. У рядку —
+`{{< highlight go "hl_inline=true" >}}fmt.Println(1){{< /highlight >}}`.
+
+Мови, яких Chroma не знає, описано в `data/syntax/<назва>.yaml`: зараз це
+Overpass QL (`overpassql`, `overpass`, `oql`) і Level0L (`l0l`, `level0`,
+`level0l`, за граматикою з pnmrnko/level0-vscode). Опис — регулярні вирази з
+класами Chroma: `tokens` (перший збіг виграє) і, за потреби, `lines` —
+правила на цілий рядок, групи яких розфарбовуються окремо. Розбирає їх
+`layouts/_markup/render-codeblock.html`; `linenos` і `hl_lines` працюють і
+для них. Новій мові досить нового YAML-файлу. Приклади — у дописі
+«OpenStreetMap у коді» (`content/posts/2026-10-osm-u-kodi/`).
+
 ## Старий блог
 
 Дописи 2006–2018 перенесено з Aegea (pnmrnko.pp.ua). Фото з нього не
