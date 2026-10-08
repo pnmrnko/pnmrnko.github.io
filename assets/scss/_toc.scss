@@ -1,8 +1,8 @@
 // Table of Contents
 //
 // Hugo renders `<nav id="TableOfContents">`; the label comes from i18n via
-// `data-title` on the wrapper. No markers: the entries line up under the
-// label, and only nested levels step in.
+// `data-title` on the wrapper. No markers; each level steps in a little
+// from the one above, the first from the label.
 
 .toc {
   padding: var(--spacer-2) 0;
@@ -22,7 +22,8 @@
     list-style: none;
   }
 
-  > nav > ul {
-    padding-left: 0;
+  // The same gap before a first sub-entry as between entries (li + li)
+  ul ul {
+    margin-top: .25rem;
   }
 }
