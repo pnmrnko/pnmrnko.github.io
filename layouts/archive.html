@@ -6,7 +6,7 @@
   {{- range $posts.GroupByDate "2006-01" }}
     {{- $month := time.AsTime (printf "%s-01" .Key) }}
   <h2>{{ i18n (printf "month%d" (int $month.Month)) }} {{ $month.Year }}</h2>
-  <ul>
+  <ul class="archive-list">
     {{- range .Pages }}
     <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
     {{- end }}

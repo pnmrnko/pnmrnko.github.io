@@ -46,6 +46,12 @@ html {
   gap: .5rem var(--spacer-2);
 }
 
+// Archive: posts by month, no markers, flush with the month heading
+.archive-list {
+  padding-left: 0;
+  list-style: none;
+}
+
 .posts-empty {
   color: var(--gray-600);
 }
