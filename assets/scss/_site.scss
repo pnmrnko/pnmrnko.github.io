@@ -54,8 +54,24 @@ html {
   overflow-x: auto;
   overscroll-behavior-x: contain;
 
+  // As wide as its content, not the whole column; a long table still fills
+  // the column and wraps. The first and last columns sit flush with the text.
   table {
+    width: auto;
     margin-bottom: 0;
+  }
+
+  th,
+  td {
+    padding-inline: .75rem;
+
+    &:first-child {
+      padding-inline-start: 0;
+    }
+
+    &:last-child {
+      padding-inline-end: 0;
+    }
   }
 
   &:focus-visible {
