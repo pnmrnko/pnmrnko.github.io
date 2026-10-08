@@ -89,7 +89,7 @@ If a name looks incomplete or functions like a modifier, check your sources and 
 
 Another type of attribute is **apposition**. Here, the generic term also comes first, followed by a noun in the nominative case that specifically identifies the object. While the previous two types require the generic term as an inseparable part, in this case, it can often be omitted if necessary. Some of the names below are traditionally used without the generic word, or the word is redundant because the mapped object already has a tag describing its type:
 
-> <p><s>misto</s> Lviv (<s>City of</s> Lviv), <s>selyshche</s> Losynivka (<s>Settlement of</s> Losynivka), <s>selo</s> Trypillia (<s>Village of</s> Trypillia), <s>richka</s> Desna (Desna <s>River</s>), <s>hora</s> Hoverla (<s>Mount</s> Hoverla), <s>stantsiia</s> Zhmerynka (Zhmerynka <s>Station</s>), <s>avtozapravka</s> OKKO (OKKO <s>gas station</s>), <s>kafe</s> Teplo (Teplo <s>Cafe</s>), <s>restoran</s> McDonald’s.</p>
+> ~~misto~~ Lviv (~~City of~~ Lviv), ~~selyshche~~ Losynivka (~~Settlement of~~ Losynivka), ~~selo~~ Trypillia (~~Village of~~ Trypillia), ~~richka~~ Desna (Desna ~~River~~), ~~hora~~ Hoverla (~~Mount~~ Hoverla), ~~stantsiia~~ Zhmerynka (Zhmerynka ~~Station~~), ~~avtozapravka~~ OKKO (OKKO ~~gas station~~), ~~kafe~~ Teplo (Teplo ~~Cafe~~), ~~restoran~~ McDonald’s.
 
 However, for names of streets, lanes, and similar objects, **generic words should always be preserved**. There are no separate tags for different types of streets, and since these objects are used in addressing, their full name carries specific importance:
 
