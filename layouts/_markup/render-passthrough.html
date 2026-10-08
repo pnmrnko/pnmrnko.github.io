@@ -45,6 +45,10 @@
     {{- $html = replaceRE `<mo><(mover|munder)><mo><mo>([^<]*)</mo></mo>` `<mrow><$1><mo>$2</mo>` $html }}
     {{- $html = replaceRE `</(mover|munder)></mo>` `</$1></mrow>` $html }}
 
+    {{- /* mhchem smashes its subscripts and charges (H₂, e⁺) to zero height,
+      and Safari draws a zero-height mpadded as nothing */}}
+    {{- $html = replace $html `<mphantom><mi>X</mi></mphantom></mpadded><mpadded height="0px">` `<mphantom><mi>X</mi></mphantom></mpadded><mpadded>` }}
+
     {{- /* vmatrix and Vmatrix bars aren't stretchy in the operator dictionary */}}
     {{- $html = replaceRE `<mo fence="true">([∣∥])</mo>` `<mo fence="true" stretchy="true" symmetric="true">$1</mo>` $html }}
 
