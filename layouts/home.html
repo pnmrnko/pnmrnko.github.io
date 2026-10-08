@@ -7,13 +7,7 @@
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </h1>
     {{ partial "post-date.html" . }}
-    {{- /* Show the excerpt only when the author marked one with <!--more--> */}}
-    {{- if strings.Contains .RawContent "<!--more-->" }}
-    {{ .Summary }}
-    <p><a class="post-more" href="{{ .RelPermalink }}">{{ i18n "readMore" }} →</a></p>
-    {{- else }}
     {{ .Content }}
-    {{- end }}
   </article>
   {{- else }}
   <p class="posts-empty">{{ i18n "noPosts" }}</p>
