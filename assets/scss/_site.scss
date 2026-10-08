@@ -140,7 +140,7 @@ html {
 // so the page's own <h1> stays the first heading.
 .masthead-title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: unquote("min(1.25rem, 4.8vw)");
   line-height: 1.2;
   color: var(--heading-color);
 }
@@ -155,8 +155,11 @@ html {
 // the p starts (the sparkline's tail sits left of it). The p is set 58
 // units (about 2px) inside the text edge, which looked better than flush.
 // Update the vb numbers together if the SVG is regenerated.
+// On narrow phones the logo and the tagline shrink with the screen, so the
+// tagline keeps to two lines beside the logo; from about 450px wide both
+// are at full size.
 .masthead {
-  --logo-size: 2.125rem;
+  --logo-size: #{"min(2.125rem, 7.5vw)"};
   --logo-vb-width: 5440;
   --logo-vb-height: 1720;
   --logo-vb-baseline: 724;

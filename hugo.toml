@@ -40,7 +40,7 @@ disableKinds = ["taxonomy", "term"]
   weight = 2
   title = "pnmrnko"
   [languages.en.params]
-    tagline = "Life, Maps and Lies of S.\u202fPonomarenko"
+    tagline = "Life, Maps and Lies of\u00a0S.\u202fPonomarenko"
     description = "Personal blog."
     ogLocale = "en_US"
 
