@@ -3,6 +3,7 @@ title: "Mood"
 slug: mood
 date: 2006-12-08T15:30:52+02:00
 lastmod: 2018-03-17T23:32:23+02:00
+draft: true
 ---
 
 I was in a good mood this morning. Even though the weather was bad, I started the day laughing. I usually get up late, but today I got up right on schedule. I made myself some muesli, got dressed quickly, glanced at the clock — and there were still 30 minutes before school opened. A cartoon was on at that time, so to fill the time I turned on the TV.

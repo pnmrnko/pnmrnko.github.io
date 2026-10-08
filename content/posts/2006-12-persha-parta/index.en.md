@@ -3,6 +3,7 @@ title: "New Year Is Coming"
 slug: first-desk
 date: 2006-12-06T10:55:23+02:00
 lastmod: 2018-04-02T20:59:43+02:00
+draft: true
 ---
 
 ## The First Desk

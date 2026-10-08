@@ -3,6 +3,7 @@ title: "No Music Class"
 slug: no-music-class
 date: 2006-12-07T09:30:53+02:00
 lastmod: 2018-04-02T20:58:00+02:00
+draft: true
 ---
 
 ## 8:55

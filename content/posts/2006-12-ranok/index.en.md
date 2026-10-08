@@ -3,6 +3,7 @@ title: "Morning"
 slug: morning
 date: 2006-12-09T07:00:00+03:00
 lastmod: 2018-03-31T23:34:33+03:00
+draft: true
 ---
 
 I didn’t get up very cheerful. As soon as I woke up, I turned on the TV. NTN was showing the cartoon “Jim and Jerry”, then I switched to M1 and watched until breakfast.
