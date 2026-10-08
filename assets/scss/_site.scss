@@ -11,6 +11,12 @@ html {
   margin-left: 0;
 }
 
+// The top of the logo's ink (the k's ascender) sits as far from the top of
+// the window as the text column sits from its left edge.
+.masthead {
+  padding-top: calc(var(--spacer-2) - var(--logo-unit) * var(--logo-vb-ink-top));
+}
+
 // Site additions
 //
 // Things Poole doesn't ship: the masthead navigation with the language switch,
@@ -72,7 +78,7 @@ html {
 // Site title as a logo. It used to be Poole's <h3>; now it is a plain block
 // so the page's own <h1> stays the first heading.
 .masthead-title {
-  margin: 1.5rem 0 0;
+  margin: 0;
   font-size: 1.25rem;
   line-height: 1.2;
   color: var(--heading-color);
@@ -82,19 +88,22 @@ html {
   color: inherit;
 }
 
-// Logo geometry, in the SVG's own units (see assets/logo.svg): viewBox
-// width and height, the letters' baseline and x-height measured from the
-// top / baseline, and where the p starts (the sparkline's tail sits left of
-// it). The p is set 58 units (about 2px) inside the text edge, which looked
-// better than flush. Update these together if the SVG is regenerated.
+// Logo geometry. The letters are set at --logo-size per 1000 font units;
+// the rest are the SVG's own numbers (see assets/logo.svg): viewBox width
+// and height, the baseline measured from the top, the x-height, and where
+// the p starts (the sparkline's tail sits left of it). The p is set 58
+// units (about 2px) inside the text edge, which looked better than flush.
+// Update the vb numbers together if the SVG is regenerated.
 .masthead {
-  --logo-height: 3.4rem;
+  --logo-size: 2.125rem;
   --logo-vb-width: 5440;
-  --logo-vb-height: 1601;
-  --logo-vb-baseline: 605;
+  --logo-vb-height: 1720;
+  --logo-vb-baseline: 724;
   --logo-vb-xheight: 444;
   --logo-vb-inset: 366;
-  --logo-unit: calc(var(--logo-height) / var(--logo-vb-height));
+  --logo-vb-ink-top: 30;
+  --logo-unit: calc(var(--logo-size) / 1000);
+  --logo-height: calc(var(--logo-unit) * var(--logo-vb-height));
   --logo-xheight: calc(var(--logo-unit) * var(--logo-vb-xheight));
 }
 
