@@ -137,8 +137,21 @@ html {
 // logo's x-height and its own (1ex).
 // Lowered a hair (0.06em, about 1px) more by eye: flush with the x-height
 // line the tagline looked slightly high next to the logo's rounder letters.
-.masthead-title small {
-  vertical-align: calc(var(--logo-xheight) - 1ex - .06em);
+// Logo and tagline are a flex row, so on a narrow screen the tagline wraps
+// in its own column beside the logo instead of under the sparkline.
+.masthead-title {
+  display: flex;
+  align-items: baseline;
+  column-gap: .333em; // the word space that used to sit between them
+
+  .masthead-logo {
+    flex: none;
+  }
+
+  small {
+    position: relative;
+    top: calc((var(--logo-xheight) - 1ex - .06em) * -1);
+  }
 }
 
 .logo-accent {
