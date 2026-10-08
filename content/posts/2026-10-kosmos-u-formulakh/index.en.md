@@ -3,6 +3,7 @@ title: "Space in Formulas"
 slug: space-in-formulas
 date: 2026-10-08T15:00:00+03:00
 toc: true
+draft: true
 ---
 
 The blog can show formulas now. They’re written in LaTeX right in the text of a post: inline between dollar signs, like $E = mc^2$, or as a separate block between double ones. When the site is built they become MathML, so the browser draws them itself, in the same New Computer Modern as the text. No JavaScript at all.
