@@ -5,6 +5,12 @@ html {
   font-size: 112.5%;
 }
 
+// The column hugs the left edge of the window (with Poole's 1.5rem gutter)
+// instead of sitting in the middle, as on Ilya Birman's blog.
+.container {
+  margin-left: 0;
+}
+
 // Site additions
 //
 // Things Poole doesn't ship: the masthead navigation with the language switch,
