@@ -7,11 +7,20 @@
   src works too).
   link="true" shows a link card instead of a player, for videos whose owner
   has disabled playback on other sites.
+  ratio="40/17" sets a video's frame to its picture's shape (default 16/9),
+  so a widescreen file isn't letterboxed by the player.
 */ -}}
 {{- $provider := .Get "provider" }}
 {{- $id := .Get "id" }}
 {{- $src := .Get "src" }}
 {{- $ratio := true }}
+{{- $shape := "" }}
+{{- with .Get "ratio" }}
+  {{- if not (findRE `^\d+(\.\d+)?(/\d+(\.\d+)?)?$` .) }}
+    {{- errorf "embed: ratio %q should look like 40/17 or 2.35 in %s" . $.Position }}
+  {{- end }}
+  {{- $shape = printf "aspect-ratio: %s" (replace . "/" " / ") }}
+{{- end }}
 {{- if eq $provider "youtube" }}
   {{- $src = printf "https://www.youtube-nocookie.com/embed/%s?hl=%s" $id site.Language.Lang }}
 {{- else if eq $provider "vimeo" }}
@@ -46,6 +55,7 @@
   {{- else }}
   <div class="embed-frame{{ if $ratio }} embed-frame-video{{ end }}">
     <iframe src="{{ $src }}" title="{{ .Get "title" }}" loading="lazy"
+      {{- with $shape }} style="{{ . | safeCSS }}"{{ end }}
       allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
       allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
   </div>
