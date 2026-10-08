@@ -51,17 +51,14 @@ html {
 
   a {
     color: var(--body-color);
-    text-decoration-color: var(--border-color);
-    text-underline-offset: .2em;
 
     &:hover,
     &:focus {
       color: var(--link-color);
-      text-decoration-color: currentColor;
     }
 
     &[aria-current="page"] {
-      text-decoration: none;
+      border-bottom-color: transparent;
     }
   }
 }
@@ -114,6 +111,54 @@ html {
 
 .logo-accent {
   fill: var(--link-color);
+}
+
+// Links: a hairline in the link's own colour at low opacity instead of a full
+// underline, after Aegea's "plain" theme (lsschool.pp.ua). The line is a
+// bottom border, so it sits below the descenders and never cuts through
+// them. It eases out when the pointer leaves and switches at once on hover.
+:root {
+  --link-underline-opacity: 15%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --link-underline-opacity: 25%;
+  }
+}
+
+a {
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, currentColor var(--link-underline-opacity), transparent);
+  transition: color .2s ease-out, border-color .2s ease-out;
+
+  &:hover,
+  &:focus-visible {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a {
+    transition: none;
+  }
+}
+
+// No line on links that are already obviously links or carry their own frame
+.masthead-logo,
+.post-title a,
+.related-posts a,
+.embed-link,
+.footnote-backref {
+  border-bottom: 0;
+}
+
+.post-title a:hover,
+.post-title a:focus-visible,
+.embed-link:hover .embed-link-title,
+.embed-link:focus .embed-link-title {
+  text-decoration: none;
+  box-shadow: 0 1px color-mix(in srgb, currentColor var(--link-underline-opacity), transparent);
 }
 
 // Visible focus for keyboard users
@@ -190,7 +235,6 @@ a:focus-visible {
   gap: var(--spacer);
   padding: var(--spacer);
   color: inherit;
-  text-decoration: none;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
 
@@ -198,10 +242,6 @@ a:focus-visible {
   &:focus {
     color: inherit;
     background-color: var(--code-bg);
-
-    .embed-link-title {
-      text-decoration: underline;
-    }
   }
 }
 
