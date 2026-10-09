@@ -21,3 +21,57 @@
     font-size: 112.5%;
   }
 }
+
+// Leading. giscus spaces lines for GitHub's system faces (20px for its 14px
+// comment text); NewCM Sans's small x-height wants them closer, as on the
+// site. Every line-height giscus sets on text is scaled by the same amount,
+// which brings comment text to the site's 1.36. :root outranks giscus's own
+// rules, whichever stylesheet loads last; pixel heights that size buttons
+// and pills are left alone.
+$leading: 0.952; // 1.36 / (20 / 14)
+
+:root {
+  line-height: 1.36;
+}
+
+@each $selector, $height in (
+  ".gsc-comment": 1.25rem,
+  ".gsc-comment-box": 1.25rem,
+  ".gsc-loading-text": 1.25rem,
+  ".gsc-pagination-button": 1.25rem,
+  ".btn": 1.25rem,
+  ".form-control, .form-select": 1.25rem,
+  "#__next .text-sm": 1.25rem,
+  "#__next .text-xs": 1rem,
+  ".f6": 1rem,
+  ".gsc-comment-box-markdown-hint": 1rem,
+  ".markdown code:not(pre > code), .markdown tt": 1rem,
+  ".markdown .footnotes": 1rem,
+  ".lh-condensed": 1.25,
+  ".Box--condensed": 1.25,
+  ".gsc-direct-reaction-button-emoji": 1.25,
+  ".gsc-reactions-button": 1.25,
+) {
+  :root :is(#{$selector}) {
+    line-height: $height * $leading;
+  }
+}
+
+// On iOS giscus sets form fields in 16px type, which keeps Safari from
+// zooming in on them, with leading to match
+@supports (-webkit-touch-callout: none) {
+  :root :is(.form-control, .form-select) {
+    line-height: 1.5rem * $leading;
+  }
+
+  @media (min-width: 768px) {
+    :root :is(.form-control, .form-select) {
+      line-height: 1.25rem * $leading;
+    }
+  }
+}
+
+// Headings in comments as in posts
+:root .markdown :is(h1, h2, h3, h4, h5, h6) {
+  line-height: 1.15;
+}
