@@ -1,6 +1,8 @@
 {{- /* giscus loads only when the reader scrolls down to it, so the post
   itself stays as light as before. Its own interface follows the page's
-  language and the system's light or dark theme, as the site does. */}}
+  language and the system's light or dark theme, as the site does, and is
+  set in the site's typefaces (assets/scss/giscus.scss). */}}
+{{- $theme := resources.Get "scss/giscus.scss" | css.Sass | minify | fingerprint }}
 {{- with site.Params.giscus }}
 {{- if ne $.Params.comments false }}
 <section class="comments">
@@ -14,7 +16,7 @@
     data-reactions-enabled="1"
     data-emit-metadata="0"
     data-input-position="bottom"
-    data-theme="preferred_color_scheme"
+    data-theme="{{ $theme.Permalink }}"
     data-lang="{{ site.Language.Lang }}"
     data-loading="lazy"
     crossorigin="anonymous"

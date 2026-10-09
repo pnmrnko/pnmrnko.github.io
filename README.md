@@ -137,6 +137,10 @@ Overpass QL (`overpassql`, `overpass`, `oql`) і Level0L (`l0l`, `level0`,
 в GitHub Discussions цього репозиторію (категорія «Announcements»), для
 коментування потрібен акаунт GitHub. Віджет вантажиться, лише коли читач
 догортає до нього, мова — за мовою сторінки, тема — за системною.
+Набрано його шрифтами сайту: тема `assets/scss/giscus.scss` бере світлу чи
+темну тему giscus і підміняє в ній шрифти; giscus вантажить її з сайту за
+повною адресою (тому локально, з `hugo server`, тема не застосовується —
+giscus.app не отримує дозволу CORS, а GitHub Pages його дає).
 Налаштування — `[params.giscus]` у `hugo.toml`, розмітка —
 `layouts/_partials/comments.html`. Щоб вимкнути коментарі під дописом,
 додайте `comments: false` у front matter.

@@ -1,0 +1,23 @@
+// giscus theme: its own light or dark look, set in the site's typefaces.
+// The comments live in an iframe on giscus.app, which loads this file by
+// its full address; the fonts come from this site, which GitHub Pages
+// serves to any origin.
+
+@import url("https://giscus.app/themes/preferred_color_scheme.css");
+@import "fonts";
+@import "variables";
+
+// giscus sets these on html; :root outranks it
+:root {
+  --font-family-sans: var(--body-font);
+  --font-family-monospace: var(--code-font);
+  // giscus sizes its text in rem; scale it up as the site does its own,
+  // for NewCM Sans's small x-height
+  font-size: 106.25%;
+}
+
+@media (min-width: 38em) {
+  :root {
+    font-size: 112.5%;
+  }
+}
