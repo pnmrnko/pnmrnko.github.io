@@ -48,6 +48,15 @@ disableKinds = ["taxonomy", "term"]
   author = "pnmrnko"
   repo = "https://github.com/pnmrnko/pnmrnko.github.io"
 
+# Comments under posts, kept in the repo's GitHub Discussions (giscus.app).
+# A post with `comments: false` in its front matter goes without.
+[params.giscus]
+  repo = "pnmrnko/pnmrnko.github.io"
+  repoId = "R_kgDOVAe-WQ"
+  category = "Announcements"
+  categoryId = "DIC_kwDOVAe-Wc4DHY0_"
+  mapping = "pathname"
+
 [markup.goldmark.renderer]
   unsafe = false
 

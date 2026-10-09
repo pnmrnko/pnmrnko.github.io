@@ -131,6 +131,16 @@ Overpass QL (`overpassql`, `overpass`, `oql`) і Level0L (`l0l`, `level0`,
 для них. Новій мові досить нового YAML-файлу. Приклади — у дописі
 «OpenStreetMap у коді» (`content/posts/2026-10-osm-u-kodi/`).
 
+## Коментарі
+
+Під кожним дописом — [giscus](https://giscus.app): коментарі зберігаються
+в GitHub Discussions цього репозиторію (категорія «Announcements»), для
+коментування потрібен акаунт GitHub. Віджет вантажиться, лише коли читач
+догортає до нього, мова — за мовою сторінки, тема — за системною.
+Налаштування — `[params.giscus]` у `hugo.toml`, розмітка —
+`layouts/_partials/comments.html`. Щоб вимкнути коментарі під дописом,
+додайте `comments: false` у front matter.
+
 ## Старий блог
 
 Дописи 2006–2018 перенесено з Aegea (pnmrnko.pp.ua). Фото з нього не

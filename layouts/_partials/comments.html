@@ -1,0 +1,24 @@
+{{- /* giscus loads only when the reader scrolls down to it, so the post
+  itself stays as light as before. Its own interface follows the page's
+  language and the system's light or dark theme, as the site does. */}}
+{{- with site.Params.giscus }}
+{{- if ne $.Params.comments false }}
+<section class="comments">
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ .repo }}"
+    data-repo-id="{{ .repoId }}"
+    data-category="{{ .category }}"
+    data-category-id="{{ .categoryId }}"
+    data-mapping="{{ .mapping }}"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="{{ site.Language.Lang }}"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async></script>
+</section>
+{{- end }}
+{{- end }}
