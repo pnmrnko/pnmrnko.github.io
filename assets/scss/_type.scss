@@ -2,30 +2,34 @@
 //
 // Headings, body text, lists, and other misc typographic elements.
 
+// Headings: light (the body's own weight) and large, half as big again as
+// Poole's. On narrow phones they shrink with the screen, so a long post title
+// doesn't fill the first screen; each stops at a floor that keeps the levels
+// apart and above the body text, and is at full size from about 600px wide.
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.15;
   color: var(--heading-color);
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: unquote("clamp(1.625rem, 9vw, 3rem)");
 }
 
 h2 {
   margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: unquote("clamp(1.4375rem, 7.5vw, 2.25rem)");
 }
 
 h3 {
   margin-top: 1.5rem;
-  font-size: 1.25rem;
+  font-size: unquote("clamp(1.3125rem, 6.25vw, 1.875rem)");
 }
 
 h4, h5, h6 {
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: unquote("clamp(1.1875rem, 5vw, 1.5rem)");
 }
 
 p {
