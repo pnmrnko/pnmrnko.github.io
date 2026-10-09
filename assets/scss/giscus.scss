@@ -75,3 +75,227 @@ $leading: 0.952; // 1.36 / (20 / 14)
 :root .markdown :is(h1, h2, h3, h4, h5, h6) {
   line-height: 1.15;
 }
+
+// Colours. giscus paints with GitHub's Primer variables, which its theme
+// sets on main; here they take the site's own colours (_variables.scss, the
+// Open Color palette), so the comments read as part of the page: the same
+// text greys and link blue, a page-coloured card where GitHub's dark theme
+// has near-black, borders as the site draws them, flat buttons in the link
+// blue instead of GitHub's green, and code in the site's syntax colours.
+// GitHub's theme stays imported above for anything left unset (its loading
+// pictures). :root main outranks giscus's main.
+:root main {
+  color: var(--color-fg-default);
+
+  // Text: the site's body text, its grey for dates and captions, the paler
+  // grey of line numbers in its code blocks
+  --color-fg-default: var(--body-color);
+  --color-fg-muted: var(--gray-600);
+  --color-fg-subtle: var(--gray-500);
+
+  // Surfaces. The card is the page; replies, the text field and code
+  // blocks sit on the grey of the site's code blocks
+  --color-canvas-default: var(--body-bg);
+  --color-canvas-overlay: var(--body-bg);
+  --color-canvas-inset: var(--code-bg);
+  --color-canvas-subtle: var(--code-bg);
+
+  --color-border-default: var(--border-color);
+  --color-border-muted: var(--gray-200);
+  // Inline code, and code blocks in replies, which already sit on grey
+  --color-neutral-muted: #{rgba(#adb5bd, .2)};
+
+  // The link blue for links, focus rings and what the reader has reacted with
+  --color-accent-fg: var(--link-color);
+  --color-accent-emphasis: var(--blue);
+  --color-accent-muted: #{rgba(#228be6, .4)};
+  --color-accent-subtle: #e7f5ff;
+
+  --color-success-fg: #2f9e44;
+  --color-attention-fg: #e67700;
+  --color-attention-muted: #{rgba(#fab005, .4)};
+  --color-attention-subtle: var(--yellow-100); // the site's .message
+  --color-danger-fg: #e03131;
+  --color-danger-muted: #{rgba(#fa5252, .4)};
+  --color-danger-subtle: #fff5f5;
+
+  --color-primer-shadow-inset: 0 0 transparent;
+  --color-action-list-item-default-hover-bg: var(--gray-100);
+  --color-social-reaction-bg-hover: var(--gray-100);
+  --color-social-reaction-bg-reacted-hover: #d0ebff;
+
+  // Buttons: flat, as nothing on the site casts a shadow
+  --color-btn-text: var(--body-color);
+  --color-btn-bg: var(--gray-000);
+  --color-btn-border: var(--border-color);
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: var(--gray-100);
+  --color-btn-hover-border: var(--gray-400);
+  --color-btn-active-bg: var(--gray-200);
+  --color-btn-active-border: var(--gray-400);
+  --color-btn-selected-bg: var(--gray-100);
+
+  // The one button that matters, Sign in or Comment, in the link blue,
+  // two shades darker so white text on it reads (5:1)
+  --color-btn-primary-text: #fff;
+  --color-btn-primary-bg: #1971c2;
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-shadow: 0 0 transparent;
+  --color-btn-primary-inset-shadow: 0 0 transparent;
+  --color-btn-primary-hover-bg: #1864ab;
+  --color-btn-primary-hover-border: transparent;
+  --color-btn-primary-selected-bg: #1864ab;
+  --color-btn-primary-selected-shadow: 0 0 transparent;
+  --color-btn-primary-disabled-text: #{rgba(#fff, .8)};
+  --color-btn-primary-disabled-bg: #74c0fc;
+  --color-btn-primary-disabled-border: transparent;
+
+  // Oldest / Newest
+  --color-segmented-control-bg: var(--gray-100);
+  --color-segmented-control-button-bg: var(--body-bg);
+  --color-segmented-control-button-selected-border: var(--gray-400);
+
+  // Code in comments, in the site's syntax colours (_syntax.scss)
+  --color-prettylights-syntax-comment: #999;
+  --color-prettylights-syntax-constant: #f60;
+  --color-prettylights-syntax-entity: #c0f;
+  --color-prettylights-syntax-storage-modifier-import: var(--body-color);
+  --color-prettylights-syntax-entity-tag: #2f6f9f;
+  --color-prettylights-syntax-keyword: #069;
+  --color-prettylights-syntax-string: #c30;
+  --color-prettylights-syntax-variable: #033;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #a00;
+  --color-prettylights-syntax-brackethighlighter-angle: var(--gray-600);
+  --color-prettylights-syntax-invalid-illegal-text: #a00;
+  --color-prettylights-syntax-invalid-illegal-bg: #faa;
+  --color-prettylights-syntax-carriage-return-text: #fff;
+  --color-prettylights-syntax-carriage-return-bg: var(--red);
+  --color-prettylights-syntax-string-regexp: #3aa;
+  --color-prettylights-syntax-markup-list: #f60;
+  --color-prettylights-syntax-markup-heading: #030;
+  --color-prettylights-syntax-markup-italic: var(--body-color);
+  --color-prettylights-syntax-markup-bold: var(--body-color);
+  --color-prettylights-syntax-markup-deleted-text: #c00;
+  --color-prettylights-syntax-markup-deleted-bg: #fcc;
+  --color-prettylights-syntax-markup-inserted-text: #2b8a3e;
+  --color-prettylights-syntax-markup-inserted-bg: #cfc;
+  --color-prettylights-syntax-markup-changed-text: #d9480f;
+  --color-prettylights-syntax-markup-changed-bg: #ffe8cc;
+  --color-prettylights-syntax-markup-ignored-text: var(--gray-100);
+  --color-prettylights-syntax-markup-ignored-bg: #1971c2;
+  --color-prettylights-syntax-meta-diff-range: #c0f;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: var(--gray-500);
+  --color-prettylights-syntax-constant-other-reference-link: #c30;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root main {
+    // Borders solid rather than the site's translucent white, so where
+    // giscus overlaps two of them the line doesn't double
+    --color-border-default: #{mix(#fff, #343a40, 15%)};
+    --color-border-muted: #{mix(#fff, #343a40, 10%)};
+    --color-neutral-muted: #{rgba(#868e96, .4)};
+
+    --color-accent-emphasis: var(--blue-400);
+    --color-accent-muted: #{rgba(#74c0fc, .4)};
+    --color-accent-subtle: #{rgba(#74c0fc, .12)};
+
+    --color-success-fg: var(--green);
+    --color-attention-fg: var(--yellow);
+    --color-attention-subtle: #{rgba(#fab005, .14)}; // the site's .message
+    --color-danger-fg: #ff8787;
+    --color-danger-muted: #{rgba(#fa5252, .5)};
+    --color-danger-subtle: #{rgba(#fa5252, .15)};
+
+    --color-action-list-item-default-hover-bg: #{rgba(#fff, .08)};
+    --color-social-reaction-bg-hover: #{rgba(#fff, .08)};
+    --color-social-reaction-bg-reacted-hover: #{rgba(#74c0fc, .2)};
+
+    --color-btn-bg: #{mix(#495057, #343a40, 50%)};
+    --color-btn-border: var(--color-border-default);
+    --color-btn-hover-bg: var(--gray-700);
+    --color-btn-hover-border: var(--gray-600);
+    --color-btn-active-bg: #{mix(#495057, #343a40, 75%)};
+    --color-btn-active-border: var(--gray-600);
+    --color-btn-selected-bg: var(--gray-900);
+
+    // Lighter on hover, as on a dark page
+    --color-btn-primary-hover-bg: #1c7ed6;
+    --color-btn-primary-selected-bg: #1864ab;
+    --color-btn-primary-disabled-text: #{rgba(#fff, .5)};
+    --color-btn-primary-disabled-bg: #{rgba(#1971c2, .5)};
+
+    --color-segmented-control-bg: #{rgba(#fff, .06)};
+    --color-segmented-control-button-bg: var(--body-bg);
+    --color-segmented-control-button-selected-border: var(--gray-600);
+
+    // As the site lifts its syntax colours on the dark code background
+    // (_site.scss)
+    --color-prettylights-syntax-comment: var(--gray-500);
+    // The site's #c0f is too dark for the grey behind code in replies
+    --color-prettylights-syntax-entity: #e599f7;
+    --color-prettylights-syntax-meta-diff-range: #e599f7;
+    --color-prettylights-syntax-storage-modifier-import: var(--gray-200);
+    --color-prettylights-syntax-entity-tag: #74c0fc;
+    --color-prettylights-syntax-keyword: #74c0fc;
+    --color-prettylights-syntax-string: #ffa8a8;
+    --color-prettylights-syntax-variable: #ffc078;
+    --color-prettylights-syntax-brackethighlighter-unmatched: #ff8787;
+    --color-prettylights-syntax-brackethighlighter-angle: var(--gray-500);
+    --color-prettylights-syntax-invalid-illegal-text: #ff8787;
+    --color-prettylights-syntax-invalid-illegal-bg: #{rgba(#fa5252, .2)};
+    --color-prettylights-syntax-markup-list: #ffc078;
+    --color-prettylights-syntax-markup-heading: var(--gray-200);
+    --color-prettylights-syntax-markup-italic: var(--gray-200);
+    --color-prettylights-syntax-markup-bold: var(--gray-200);
+    --color-prettylights-syntax-markup-deleted-text: #ffc9c9;
+    --color-prettylights-syntax-markup-deleted-bg: #{rgba(#fa5252, .2)};
+    --color-prettylights-syntax-markup-inserted-text: #b2f2bb;
+    --color-prettylights-syntax-markup-inserted-bg: #{rgba(#40c057, .2)};
+    --color-prettylights-syntax-markup-changed-text: #ffd8a8;
+    --color-prettylights-syntax-markup-changed-bg: #{rgba(#fd7e14, .2)};
+    --color-prettylights-syntax-markup-ignored-text: var(--gray-200);
+    --color-prettylights-syntax-sublimelinter-gutter-mark: var(--gray-700);
+    --color-prettylights-syntax-constant-other-reference-link: #ffa8a8;
+  }
+}
+
+// Striped table rows: on the dark card the code grey is too heavy a
+// stripe, so they take half of it
+@media (prefers-color-scheme: dark) {
+  :root .markdown table tr:nth-child(2n) {
+    background-color: #{mix(#212529, #343a40, 50%)};
+  }
+}
+
+// The add-a-reaction button in the button grey: GitHub gives it the code
+// grey, which on the dark card is a near-black spot
+:root .gsc-reactions-button {
+  background-color: var(--color-btn-bg);
+}
+
+// Headings in comments in the site's heading colour; h6 stays grey, as
+// giscus has it
+:root .markdown :is(h1, h2, h3, h4, h5) {
+  color: var(--heading-color);
+}
+
+// Links underlined with a faint line in their own colour, as on the site
+// (_site.scss)
+:root main a {
+  text-decoration-color: color-mix(in srgb, currentColor 15%, transparent);
+  text-underline-offset: .2em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root main a {
+    text-decoration-color: color-mix(in srgb, currentColor 25%, transparent);
+  }
+}
+
+// giscus greys its placeholders with a fixed Tailwind grey, too light on
+// the light theme's field and too dark on the dark one
+:root main ::placeholder {
+  color: var(--color-fg-muted);
+}
