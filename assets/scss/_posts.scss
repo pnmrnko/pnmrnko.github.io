@@ -34,7 +34,8 @@
 // Meta data line below post title
 .post-date {
   display: block;
-  margin-top: -.5rem;
+  // Close under the title, clear of its descenders: headings are set solid
+  margin-top: -.25rem;
   margin-bottom: var(--spacer);
   color: var(--gray-600);
 }

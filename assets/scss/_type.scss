@@ -3,13 +3,15 @@
 // Headings, body text, lists, and other misc typographic elements.
 
 // Headings: light (the body's own weight) and a step larger than Poole's,
-// each level a size down from the one above it. On narrow phones they shrink with the screen, so a long post title
-// doesn't fill the first screen; each stops at a floor that keeps the levels
-// apart and above the body text, and is at full size from about 540px wide.
+// each level a size down from the one above it, set solid so the lines of a
+// heading that wraps hold together. On narrow phones they shrink with the
+// screen, so a long post title doesn't fill the first screen; each stops at
+// a floor that keeps the levels apart and above the body text, and is at
+// full size from about 540px wide.
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1;
   color: var(--heading-color);
 }
 

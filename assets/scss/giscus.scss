@@ -73,7 +73,7 @@ $leading: 0.952; // 1.36 / (20 / 14)
 
 // Headings in comments as in posts
 :root .markdown :is(h1, h2, h3, h4, h5, h6) {
-  line-height: 1.15;
+  line-height: 1;
 }
 
 // Colours. giscus paints with GitHub's Primer variables, which its theme
