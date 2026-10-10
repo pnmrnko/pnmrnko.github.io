@@ -56,6 +56,33 @@
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
   <link rel="icon" href="{{ "favicon.svg" | absURL }}" type="image/svg+xml">
 
+  {{- /* Speculation rules: a link to another page of the site starts loading
+    when the pointer rests on it (or, in Safari, when it is pressed), so the
+    page opens at once on the click. Chrome and Edge render it in the
+    background; Safari, behind its SpeculationRules prefetch flag, only
+    fetches it, and only on press; other browsers ignore this. Not for the
+    feeds, full-size photos or links that open elsewhere. */}}
+  <script type="speculationrules">
+  {
+    "prerender": [{
+      "where": { "and": [
+        { "href_matches": "/*" },
+        { "not": { "href_matches": ["/*.xml", "/*.jpg", "/*.JPG", "/*.jpeg", "/*.png", "/*.webp", "/*.gif"] } },
+        { "not": { "selector_matches": ".photo a, [target], [download], [rel~=nofollow]" } }
+      ] },
+      "eagerness": "moderate"
+    }],
+    "prefetch": [{
+      "where": { "and": [
+        { "href_matches": "/*" },
+        { "not": { "href_matches": ["/*.xml", "/*.jpg", "/*.JPG", "/*.jpeg", "/*.png", "/*.webp", "/*.gif"] } },
+        { "not": { "selector_matches": ".photo a, [target], [download], [rel~=nofollow]" } }
+      ] },
+      "eagerness": "moderate"
+    }]
+  }
+  </script>
+
   {{- with site.Home.OutputFormats.Get "atom" }}
   <link rel="alternate" type="application/atom+xml" title="{{ site.Title }}" href="{{ .Permalink }}">
   {{- end }}
